@@ -3,9 +3,11 @@
 # Distributed under the terms of the LGPL License
 
 """
-This module provides the least_squares_serial_solve
-function. Eventually I can also put a serial_solve function here for
-general optimization problems.
+This module provides least_squares_libeE_solver(), as well as
+functions that are used in this routine.
+
+The driver and generator in this file are based in part on
+libensemble/gen_funcs/persistent_uniform_sampling.py
 """
 
 import numpy as np
@@ -19,10 +21,6 @@ from libensemble.tools.alloc_support import avail_worker_ids, sim_work, gen_work
 from libensemble.libE import libE
 
 
-"""
-This file is based in part on libensemble/gen_funcs/persistent_uniform_sampling.py
-"""
-
 #logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('[{}]'.format(MPI.COMM_WORLD.Get_rank()) + __name__)
 
@@ -34,6 +32,11 @@ def simsopt_libE_alloc(W, H, sim_specs, gen_specs, alloc_specs, persis_info):
     then this information is given back to the persistent generator.
 
     This function was adapted from libensemble/alloc_funcs/start_only_persistent.py
+
+    The main change from the original is that I added extra logging
+    commands.  At some point I could switch to using
+    start_only_persistent.py directly, but for now it is nice to have
+    the extra logging statements here.
     """
 
     """
@@ -105,11 +108,11 @@ def simsopt_libE_sim(H, persis_info, sim_specs, libE_info):
     x = H['x'][0]
     #out['y'][0, :] = prob.f(x)
     f = prob.f(x)
-    #logger.info("f: {}  before out['y']: {}".format(f, out['y']))
+    logger.info("f: {}  before out['y']: {}".format(f, out['y']))
     #out['y'] = prob.f(x)
     #out['y'] = f
     out['y'][0, :] = f
-    #logger.info("f: {}  after out['y']: {}".format(f, out['y']))
+    logger.info("f: {}  after out['y']: {}".format(f, out['y']))
 
     return out, persis_info
 
@@ -227,10 +230,11 @@ def least_squares_libE_solve(prob, grad=None, eps=1e-7, centered=False, **kwargs
     # do 1 function evaluation now:
     if prob.dofs.nvals is None:
         temp = prob.f()
+
     logger.info('prob.dofs.nvals: {}'.format(prob.dofs.nvals))
     sim_specs = {'sim_f': simsopt_libE_sim,
                  'in': ['x'], # Input field names. 'x' from gen_f output
-                 'out': [('y', float, prob.dofs.nvals)], # output
+                 'out': [('y', float, (prob.dofs.nvals,))], # output
                  'user': {
                      'prob': prob
                      }
@@ -240,8 +244,8 @@ def least_squares_libE_solve(prob, grad=None, eps=1e-7, centered=False, **kwargs
     alloc_specs = {'alloc_f': simsopt_libE_alloc,
                    'out': [('allocated', bool)]}
 
-    # libE requires us to initialize persis_info with at least some keys to prevent errors.
-    #persis_info = add_unique_random_streams({}, nworkers + 1) # Worker numbers start at 1
+    # libE requires us to initialize persis_info with at least a key
+    # for each MPI process; otherwise an error occurs.
     persis_info = {}
     for j in range(MPI.COMM_WORLD.Get_size()):
         persis_info[j] = dict()
