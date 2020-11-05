@@ -7,6 +7,7 @@ from .least_squares_problem import LeastSquaresTerm, LeastSquaresProblem
 from .serial_solve import least_squares_serial_solve
 from .mpi import MpiPartition
 from .mpi_solve import least_squares_mpi_solve, fd_jac_mpi
+from .libensemble_solve import least_squares_libE_solve
 
 # This next bit is to suppress a Jax warning:
 import warnings

@@ -135,7 +135,7 @@ jobs:
 
     - name: Install Jax
       run: |
-        sudo -H -E $pythonLocation/bin/python -m pip install jax jaxlib
+        sudo -H -E $pythonLocation/bin/python -m pip install jax jaxlib libensemble
 
     - name: Install mpi4py
       run: |
