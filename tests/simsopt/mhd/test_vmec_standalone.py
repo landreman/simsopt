@@ -1,10 +1,41 @@
 import unittest
 import numpy as np
 import os
-from simsopt.mhd.vmec_standalone import VmecStandalone
+from simsopt.mhd.vmec_standalone import VmecStandalone, nested_lists_to_array
 from . import TEST_DIR
 
 class VmecStandaloneTests(unittest.TestCase):
+    def test_nested_lists_to_array(self):
+        list_of_lists = [[42]]
+        arr1 = nested_lists_to_array(list_of_lists)
+        arr2 = np.array([[42]])
+        np.testing.assert_allclose(arr1, arr2)
+
+        list_of_lists = [[42], [1, 2, 3]]
+        arr1 = nested_lists_to_array(list_of_lists)
+        arr2 = np.array([[42, 0, 0],
+                         [ 1, 2, 3]])
+        np.testing.assert_allclose(arr1, arr2)
+
+        list_of_lists = [[None, 42], [1, 2, 3]]
+        arr1 = nested_lists_to_array(list_of_lists)
+        arr2 = np.array([[0, 42, 0],
+                         [1,  2, 3]])
+        np.testing.assert_allclose(arr1, arr2)
+
+        list_of_lists = [[42, 43, 44], [1, 2, 3]]
+        arr1 = nested_lists_to_array(list_of_lists)
+        arr2 = np.array([[42, 43, 44],
+                         [ 1,  2,  3]])
+        np.testing.assert_allclose(arr1, arr2)
+
+        list_of_lists = [[42, 43, 44, 45], [1, 2, 3]]
+        arr1 = nested_lists_to_array(list_of_lists)
+        arr2 = np.array([[42, 43, 44, 45],
+                         [ 1,  2,  3,  0]])
+        np.testing.assert_allclose(arr1, arr2)
+
+        
     def test_init_from_file(self):
         """
         Try creating a Vmec instance from a specified input file.
