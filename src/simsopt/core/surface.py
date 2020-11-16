@@ -151,10 +151,6 @@ class SurfaceRZFourier(Surface):
     """
     def __init__(self, nfp=1, stelsym=True, mpol=1, ntor=0):
         # Perform some validation.
-        if not isinstance(mpol, int):
-            raise TypeError("mpol must have type int")
-        if not isinstance(ntor, int):
-            raise TypeError("ntor must have type int")
         if mpol < 1:
             raise ValueError("mpol must be at least 1")
         if ntor < 0:

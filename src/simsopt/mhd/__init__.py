@@ -1,3 +1,5 @@
+from .vmec_standalone import VmecStandalone
+
 try:
     from .vmec import *
 except BaseException as err:
