@@ -71,7 +71,7 @@ jobs:
         set -ex
         cd STELLOPT
         ls
-        ./build_all -o release -j 2 LIBSTELL
+        ./build_all -o release -j 2 LIBSTELL VMEC2000
         ls -l
 
     - name: Verify libstell.so was built
