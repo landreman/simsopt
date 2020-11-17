@@ -11,8 +11,12 @@ import os.path
 import datetime
 import numpy as np
 import f90nml
+from scipy.io import netcdf
 
-from simsopt.core import Optimizable, SurfaceRZFourier
+from simsopt.core.optimizable import Optimizable
+from simsopt.core.surface import SurfaceRZFourier
+from simsopt.core.util import Struct
+from simsopt.core.run_standalone import run_standalone
 
 logger = logging.getLogger(__name__)
 
@@ -42,6 +46,7 @@ class VmecStandalone(Optimizable):
         """
         Constructor
         """
+        self.exe = exe
         if filename is None:
             # Read default input file, which should be in the same
             # directory as this file:
@@ -52,6 +57,7 @@ class VmecStandalone(Optimizable):
             logger.info("Initializing a VMEC object from file: " + filename)
 
         self.read_input(filename)
+        self.iteration = 0
         self.depends_on = ["boundary"]
         self.fixed = np.full(len(self.get_dofs()), True)
         self.names = ['delt', 'tcon0', 'phiedge', 'curtor', 'gamma']
@@ -249,4 +255,65 @@ class VmecStandalone(Optimizable):
         self.phiedge = x[2]
         self.curtor = x[3]
         self.gamma = x[4]
-    
+        
+    def read_wout(self, filename):
+        self.wout = Struct()
+        fields = ['aspect', 'iotaf', 'volume_p']
+        f = netcdf.netcdf_file(filename, 'r', mmap=False)
+        for field in fields:
+            print('field=', field)
+            setattr(self.wout, field, f.variables[field][()])
+        f.close()
+        
+    def run(self):
+        """
+        Run VMEC, if needed.
+        """
+        if not self.need_to_run_code:
+            logger.info("run() called but no need to re-run VMEC.")
+            return
+        logger.info("Preparing to run VMEC.")
+
+        # Set filenames:
+        input_filename = "input.{:05}".format(self.iteration)
+        code_name = "vmec{:05}".format(self.iteration) # Used for stdout/stderr
+        wout_filename = 'wout_{:05}.nc'.format(self.iteration)
+
+        self.write_input(input_filename)
+        # Form command to run the executable:
+        cmd = (self.exe + " " + input_filename).split()
+        success = run_standalone(cmd, code_name)
+        if not success:
+            raise RuntimeError('VMEC failed')
+        self.read_wout(wout_filename)
+        self.iteration += 1
+        self.need_to_run_code = False
+        
+    def aspect(self):
+        """
+        Return the plasma aspect ratio.
+        """
+        self.run()
+        return self.wout.aspect
+        
+    def volume(self):
+        """
+        Return the volume inside the VMEC last closed flux surface.
+        """
+        self.run()
+        return self.wout.volume_p
+        
+    def iota_axis(self):
+        """
+        Return the rotational transform on axis
+        """
+        self.run()
+        return self.wout.iotaf[0]
+
+    def iota_edge(self):
+        """
+        Return the rotational transform at the boundary
+        """
+        self.run()
+        return self.wout.iotaf[-1]
+
