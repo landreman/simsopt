@@ -279,6 +279,7 @@ class VmecStandalone(Optimizable):
         input_filename = "input.{:05}".format(self.iteration)
         code_name = "vmec{:05}".format(self.iteration) # Used for stdout/stderr
         wout_filename = 'wout_{:05}.nc'.format(self.iteration)
+        self.wout_filename = wout_filename
 
         self.write_input(input_filename)
         # Form command to run the executable:

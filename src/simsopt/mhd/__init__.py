@@ -1,4 +1,5 @@
 from .vmec_standalone import VmecStandalone
+from .booz_xform_standalone import BoozXformStandalone
 
 try:
     from .vmec import *
