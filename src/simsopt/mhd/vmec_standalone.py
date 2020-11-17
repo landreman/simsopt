@@ -60,7 +60,7 @@ class VmecStandalone(Optimizable):
         self.iteration = 0
         self.depends_on = ["boundary"]
         self.fixed = np.full(len(self.get_dofs()), True)
-        self.names = ['delt', 'tcon0', 'phiedge', 'curtor', 'gamma']
+        self.names = ['phiedge', 'curtor', 'pres_scale']
 
     def _parse_namelist(self, nml, varname, default):
         """
@@ -117,7 +117,7 @@ class VmecStandalone(Optimizable):
         self._parse_namelist(nml, 'ac', [0.0])
         self._parse_namelist(nml, 'ai', [0.0])
         self._parse_namelist(nml, 'piota_type', 'power_series')
-        self._parse_namelist(nml, 'pcurr_type', 'power_peries')
+        self._parse_namelist(nml, 'pcurr_type', 'power_series')
         #self._parse_namelist(nml, '', )
 
         # Make sure 1D arrays are actually arrays rather than ints or floats:
@@ -246,22 +246,23 @@ class VmecStandalone(Optimizable):
         f.close()
         
     def get_dofs(self):
-        return np.array([self.delt, self.tcon0, self.phiedge, self.curtor, self.gamma])
+        return np.array([self.phiedge, self.curtor, self.pres_scale])
 
     def set_dofs(self, x):
         self.need_to_run_code = True
-        self.delt = x[0]
-        self.tcon0 = x[1]
-        self.phiedge = x[2]
-        self.curtor = x[3]
-        self.gamma = x[4]
+        self.phiedge = x[0]
+        self.curtor = x[1]
+        self.pres_scale = x[2]
         
     def read_wout(self, filename):
+        """
+        Read in a vmec wout file, storing selected variables in a "wout"
+        class that is an attribute of this class.
+        """
         self.wout = Struct()
-        fields = ['aspect', 'iotaf', 'volume_p']
+        fields = ['aspect', 'iotaf', 'volume_p', 'betatotal', 'rmnc', 'zmns']
         f = netcdf.netcdf_file(filename, 'r', mmap=False)
         for field in fields:
-            print('field=', field)
             setattr(self.wout, field, f.variables[field][()])
         f.close()
         

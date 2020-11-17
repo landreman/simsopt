@@ -18,10 +18,10 @@ cd tests/simsopt
 #python -m unittest -v simsopt.tests.test_mpi
 
 # Example of running a specific test that matches a pattern:
-python -m unittest -v -k VmecStandalone
+#python -m unittest -v -k vmec
 
 # Run all tests:
-#python -m unittest -v
+python -m unittest -v
 # -v for verbose
 
 #cd examples

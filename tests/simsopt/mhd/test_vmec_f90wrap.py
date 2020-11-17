@@ -122,10 +122,10 @@ class F90wrapVmecTests(unittest.TestCase):
         print('rmnc.shape:',vmec_f90wrap.read_wout_mod.rmnc.shape)
 
         self.assertAlmostEqual(vmec_f90wrap.read_wout_mod.iotaf[-1], \
-                                   0.654868168783638, places=4)
+                                   0.655517502443946, places=2)
 
         self.assertAlmostEqual(vmec_f90wrap.read_wout_mod.rmnc[0, 0], \
-                                   1.4773028173065, places=4)
+                                   1.4783578816835392, places=3)
 
 
 if __name__ == "__main__":
