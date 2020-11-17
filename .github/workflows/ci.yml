@@ -73,11 +73,19 @@ jobs:
         ls
         ./build_all -o release -j 2 LIBSTELL VMEC2000
         ls -l
+        #./build_all -o release -j 2 LIBSTELL VMEC2000
 
     - name: Verify libstell.so was built
       run: |
         pwd
         ls STELLOPT/LIBSTELL/Release
+
+    - name: Build vmec
+      run: |
+        set -ex
+        cd STELLOPT
+        ls
+        ./build_all -o release VMEC2000
 
     - name: Add STELLOPT/bin to LD_LIBRARY_PATH so libstell.so can be found
       run: echo "LD_LIBRARY_PATH=/home/runner/work/simsopt/simsopt/STELLOPT/bin" >> $GITHUB_ENV
