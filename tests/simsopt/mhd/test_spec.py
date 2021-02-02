@@ -3,7 +3,7 @@ import numpy as np
 import os
 import logging
 import shutil
-from simsopt.mhd.spec import Spec, nested_lists_to_array
+from simsopt.mhd.spec import Spec, nested_lists_to_array, Residue
 from simsopt.core.least_squares_problem import LeastSquaresProblem
 from simsopt.solve.serial_solve import least_squares_serial_solve
 from . import TEST_DIR
@@ -315,6 +315,51 @@ class SpecTests(unittest.TestCase):
         self.assertAlmostEqual(equil.iota(), -0.4114567, places=3)
         self.assertAlmostEqual(prob.objective(), 7.912501330E-04, places=3)
 
+        
+    @unittest.skipIf(not spec_found, "SPEC standalone executable not found")
+    def test_spec_residue_optimization(self):
+        """
+        Optimize the O-point and X-point residues of the iota = -8/7
+        resonance in the Aten configuration. This example is a
+        slightly simplified version of the case shown in talks. The
+        SPEC resolution is lower to make the test fast. Only a single
+        Fourier harmonic is adjusted, instead of >= 2 modes. And the
+        residues of the iota = -12/11 field lines are not optimized.
+        """
+        s = Spec(os.path.join(TEST_DIR,'aten.sp'))
+
+        # Expand number of Fourier modes a bit:
+        ntor = s.boundary.ntor
+        s.boundary.change_resolution(6, ntor)
+
+        # Define the parameter space to be a single mode amplitude:
+        s.boundary.all_fixed()
+        s.boundary.set_fixed('zs(6,1)', False)
+
+        # Resonant surface is iota = p / q:
+        p = -8
+        q = 7
+        # Guess for radial location of the island chain:
+        s_guess = 0.9
+
+        residue1 = Residue(s, p, q, s_guess=s_guess)
+        residue2 = Residue(s, p, q, s_guess=s_guess, theta=np.pi)
+
+        # Objective function is residue1 ** 2 + residue2 ** 2:
+        prob = LeastSquaresProblem([(residue1, 0, 1), (residue2, 0, 1)])
+
+        # Check initial residues:
+        residues = prob.f()
+        np.testing.assert_allclose(residues, [0.02331533, -0.02287638], atol=0, rtol=1e-2)
+
+        # Optimize the boundary:
+        least_squares_serial_solve(prob)
+
+        # Check final results
+        np.testing.assert_allclose(s.boundary.get_zs(6,1), 0.0015516488250454457, atol=0, rtol=1e-2)
+        np.testing.assert_allclose(prob.x,                 0.0015516488250454457, atol=0, rtol=1e-2)
+        residues = prob.f()
+        np.testing.assert_allclose(residues, [-0.00092405, -0.00094109], atol=0, rtol=1e-2)
 
 if __name__ == "__main__":
     unittest.main()
