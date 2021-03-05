@@ -1,0 +1,480 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Defining optimization problems &mdash; simsopt 0.0.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/equation_numbers.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Testing" href="testing.html" />
+    <link rel="prev" title="Getting started" href="getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> simsopt
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Defining optimization problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#optimizable-objects">Optimizable objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#specifying-functions-that-go-into-the-objective-function">Specifying functions that go into the objective function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#degrees-of-freedom-dofs">Degrees of freedom (“dofs”)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#helpful-functions">Helpful functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fixing-degrees-of-freedom">Fixing degrees of freedom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#derivatives">Derivatives</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#python-test-suite">Python test suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#longer-examples">Longer examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#continuous-integration">Continuous integration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="source.html">Source code on GitHub</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="simsopt.html">simsopt package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="simsopt.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.core.html">simsopt.core package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.dofs">simsopt.core.dofs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.functions">simsopt.core.functions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.least_squares_problem">simsopt.core.least_squares_problem module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.optimizable">simsopt.core.optimizable module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.surface">simsopt.core.surface module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.util">simsopt.core.util module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.geo.html">simsopt.geo package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.biotsavart">simsopt.geo.biotsavart module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.config">simsopt.geo.config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.curve">simsopt.geo.curve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.fouriercurve">simsopt.geo.fouriercurve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.jit">simsopt.geo.jit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.magneticaxis">simsopt.geo.magneticaxis module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.objectives">simsopt.geo.objectives module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#simsopt-geo-parameterfreecurve-module">simsopt.geo.parameterfreecurve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.mhd.html">simsopt.mhd package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#module-simsopt.mhd.boozer">simsopt.mhd.boozer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#module-simsopt.mhd.spec">simsopt.mhd.spec module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#module-simsopt.mhd.vmec">simsopt.mhd.vmec module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#module-simsopt.mhd">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.solve.html">simsopt.solve package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#module-simsopt.solve.mpi_solve">simsopt.solve.mpi_solve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#module-simsopt.solve.serial_solve">simsopt.solve.serial_solve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#module-simsopt.solve">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.util.html">simsopt.util package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.util.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.util.html#module-simsopt.util.mpi">simsopt.util.mpi module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.util.html#module-simsopt.util">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="simsopt.html#module-simsopt">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">simsopt</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Defining optimization problems</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/problems.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="defining-optimization-problems">
+<h1>Defining optimization problems<a class="headerlink" href="#defining-optimization-problems" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="optimizable-objects">
+<h2>Optimizable objects<a class="headerlink" href="#optimizable-objects" title="Permalink to this headline">¶</a></h2>
+<p>Simsopt is able to optimize any python object that has a
+<code class="docutils literal notranslate"><span class="pre">get_dofs()</span></code> function and a <code class="docutils literal notranslate"><span class="pre">set_dofs()</span></code> function.  The overall
+objective function can be defined using any function, attribute, or
+&#64;property of such an object.  Optimizable objects can depend on other
+optimizable objects, so objects can be part of an optimization even if
+they do not directly own a function that is part of the overall
+objective function.</p>
+</div>
+<div class="section" id="specifying-functions-that-go-into-the-objective-function">
+<h2>Specifying functions that go into the objective function<a class="headerlink" href="#specifying-functions-that-go-into-the-objective-function" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we want to solve a least-squares optimization problem in which
+an object <code class="docutils literal notranslate"><span class="pre">obj</span></code> is optimized. If <code class="docutils literal notranslate"><span class="pre">obj</span></code> has a function <code class="docutils literal notranslate"><span class="pre">func()</span></code>,
+we can use a 3-element tuple or list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">term1</span> <span class="o">=</span> <span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">func</span><span class="p">,</span> <span class="n">goal</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>to represent a term <code class="docutils literal notranslate"><span class="pre">weight</span> <span class="pre">*</span> <span class="pre">((obj.func()</span> <span class="pre">-</span> <span class="pre">goal)</span> <span class="pre">**</span> <span class="pre">2)</span></code> in the
+least-squares objective function. If you prefer, you can specify
+<code class="docutils literal notranslate"><span class="pre">sigma</span> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">/</span> <span class="pre">sqrt(weight)</span></code> rather than <code class="docutils literal notranslate"><span class="pre">weight</span></code> and use the
+<code class="docutils literal notranslate"><span class="pre">LeastSquaresTerm</span></code> object, as in <code class="docutils literal notranslate"><span class="pre">term1</span> <span class="pre">=</span>
+<span class="pre">simsopt.LeastSquaresTerm(obj.func,</span> <span class="pre">goal,</span> <span class="pre">sigma=0.3)</span></code>.</p>
+<p>In this example, <code class="docutils literal notranslate"><span class="pre">func()</span></code> could return a scalar, or it could return
+a 1D numpy array. In the latter case, <code class="docutils literal notranslate"><span class="pre">sum(weight</span> <span class="pre">*</span> <span class="pre">((obj.func()</span> <span class="pre">-</span>
+<span class="pre">goal)</span> <span class="pre">**</span> <span class="pre">2))</span></code> would be included in the objective function, and
+<code class="docutils literal notranslate"><span class="pre">goal</span></code> could be either a scalar or a 1D numpy array of the same
+length as that returned by <code class="docutils literal notranslate"><span class="pre">func()</span></code>.</p>
+<p>The function name <code class="docutils literal notranslate"><span class="pre">J</span></code> is special: if <code class="docutils literal notranslate"><span class="pre">obj</span></code> has a function <code class="docutils literal notranslate"><span class="pre">J</span></code>
+then we can specify just the object, and the function name <code class="docutils literal notranslate"><span class="pre">J</span></code> will
+be assumed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">term2</span> <span class="o">=</span> <span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">goal</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or, if we want the objective function to include a <code class="docutils literal notranslate"><span class="pre">&#64;property</span></code> or
+attribute that is not a function, we can use a 4-element tuple or list
+instead of the 3-element form above. In the 4-element syntax, element
+1 is the attribute or property name as a string. For instance, if
+<code class="docutils literal notranslate"><span class="pre">obj</span></code> has a property named <code class="docutils literal notranslate"><span class="pre">prop</span></code>, we would write:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">term3</span> <span class="o">=</span> <span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;prop&#39;</span><span class="p">,</span> <span class="n">goal</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This longer syntax is needed to optimize a property or attribute
+because <code class="docutils literal notranslate"><span class="pre">obj.prop</span></code> evaluates to a number.  As with the previous
+examples, <code class="docutils literal notranslate"><span class="pre">prop</span></code> could be either a scalar or a 1D numpy array.</p>
+<p>The total least-squares objective function is created using a list or
+tuple of all the terms that are to be added together:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prob</span> <span class="o">=</span> <span class="n">LeastSquaresProblem</span><span class="p">([</span><span class="n">term1</span><span class="p">,</span> <span class="n">term2</span><span class="p">,</span> <span class="n">term3</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The list can include any mixture of terms defined by scalar functions
+and by 1D numpy array-valued functions. The problem can be defined
+without defining the intermediate names <code class="docutils literal notranslate"><span class="pre">term1</span></code>, <code class="docutils literal notranslate"><span class="pre">term2</span></code>, etc:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prob</span> <span class="o">=</span> <span class="n">LeastSquaresProblem</span><span class="p">([(</span><span class="n">obj1</span><span class="o">.</span><span class="n">func1</span><span class="p">,</span> <span class="n">goal1</span><span class="p">,</span> <span class="n">weight1</span><span class="p">),</span>
+                            <span class="p">(</span><span class="n">obj2</span><span class="p">,</span> <span class="n">goal2</span><span class="p">,</span> <span class="n">weight2</span><span class="p">),</span>
+                            <span class="p">(</span><span class="n">obj3</span><span class="p">,</span> <span class="s1">&#39;prop&#39;</span><span class="p">,</span> <span class="n">goal3</span><span class="p">,</span> <span class="n">weight3</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="degrees-of-freedom-dofs">
+<h2>Degrees of freedom (“dofs”)<a class="headerlink" href="#degrees-of-freedom-dofs" title="Permalink to this headline">¶</a></h2>
+<p>Any optimizable object must have a function <code class="docutils literal notranslate"><span class="pre">get_dofs(self)</span></code> that
+returns a 1D numpy array of floats. (Simsopt will not allow integer
+optimization.)  Any optimizable object must have a function
+<code class="docutils literal notranslate"><span class="pre">set_dofs(self,</span> <span class="pre">x)</span></code> that accepts <code class="docutils literal notranslate"><span class="pre">x</span></code>, a 1D numpy array of
+floats. Some of the degrees of freedom may be fixed in the
+optimization - see below.</p>
+<p>It can be convenient to have a descriptive string associated with each
+dof, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;phiedge&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;rc(1,0)&quot;</span></code>. To supply these names, add a
+<code class="docutils literal notranslate"><span class="pre">names</span></code> attribute to your optimizable object which is a list of
+strings, where the length of the list matches the size of the
+<code class="docutils literal notranslate"><span class="pre">get_dofs()</span></code> array. It is not necessary to have a <code class="docutils literal notranslate"><span class="pre">names</span></code> list; if
+one is not present, simsopt will use as a default <code class="docutils literal notranslate"><span class="pre">[&quot;x[0]&quot;,</span> <span class="pre">&quot;x[1]&quot;,</span>
+<span class="pre">...]</span></code>.</p>
+<p>Each dof is owned by a single object. In other words, if a physical
+dof is represented by an array element for <code class="docutils literal notranslate"><span class="pre">get_dofs()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">set_dofs()</span></code> of a particular object, there should be no other object
+that has that physical degree of freedom an an element in its
+<code class="docutils literal notranslate"><span class="pre">get_dofs()</span></code> and <code class="docutils literal notranslate"><span class="pre">set_dofs()</span></code> arrays. If two objects both depend
+on a given physical degree of freedom, that information should be
+represented using the <code class="docutils literal notranslate"><span class="pre">depends_on</span></code> attribute, described below.</p>
+<p>In addition to the “local” dofs owned by each object, an important
+concept is the set of “global” dofs associated with an optimization
+problem. The global dofs are the set of all non-fixed dofs of each
+optimized object and all objects upon which they depend. (Dependencies
+among objects are discussed in a section below.)  The global dofs
+correspond to the state vector passed to the optimization algorithm.</p>
+<p>At each function evaluation during an optimization, simsopt will call
+the <code class="docutils literal notranslate"><span class="pre">set_dofs()</span></code> function of each object involved in the
+optimization problem.  This will happen even if the local dofs owned
+by that object have not changed since the previous call to
+<code class="docutils literal notranslate"><span class="pre">set_dofs()</span></code> (which may happen if global dofs owned by a different
+object changed instead.)  This choice is made because even if an
+object’s dofs have not changed, an object it depends on may have
+changed, so it may still need to update.  It is the responsibility of
+each object to check its dof vector and its dependencies to know when
+it needs to update expensive calculations.</p>
+</div>
+<div class="section" id="helpful-functions">
+<h2>Helpful functions<a class="headerlink" href="#helpful-functions" title="Permalink to this headline">¶</a></h2>
+<p>Simsopt can provide several helpful functions to your optimizable
+object. For instance, functions can be provided to help with fixing
+certain degrees of freedom, as discussed below. There is also the
+method <code class="docutils literal notranslate"><span class="pre">index(str)</span></code> which gets the index into the dof array
+associated with a dof name <code class="docutils literal notranslate"><span class="pre">str</span></code>, and the methods <code class="docutils literal notranslate"><span class="pre">get(str)</span></code> and
+<code class="docutils literal notranslate"><span class="pre">set(str,</span> <span class="pre">val)</span></code> which get and set a dof associated with the name
+<code class="docutils literal notranslate"><span class="pre">str</span></code>.</p>
+<p>There are two ways to equip your object with these functions. One way
+is to inherit from the <code class="docutils literal notranslate"><span class="pre">simsopt.Optimizable</span></code> class. Or, if you do
+not want your class to depend on simsopt, you can apply the decorator
+<code class="docutils literal notranslate"><span class="pre">simsopt.optimizable()</span></code> to your object. Note the first method uses a
+capital O whereas the latter uses a lowercase o.</p>
+</div>
+<div class="section" id="fixing-degrees-of-freedom">
+<h2>Fixing degrees of freedom<a class="headerlink" href="#fixing-degrees-of-freedom" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes we may want to vary a particular dof in an optimization, and
+other times we may want to hold that same dof fixed.  One example is
+the current in a coil. To enable this flexibility, every local dof in
+simsopt is considered to be either fixed or not.  Only the non-fixed
+dofs are included in the global dofs for an optimization. (So by
+definition, every global dof is not fixed.)  Whether or not a local
+dof is fixed is determined by an optional <code class="docutils literal notranslate"><span class="pre">fixed</span></code> attribute of the
+object that owns the dof. The <code class="docutils literal notranslate"><span class="pre">fixed</span></code> attribute can be either a list
+or numpy array, with each element True or False.</p>
+<p>There are several ways you can manipulate the <code class="docutils literal notranslate"><span class="pre">fixed</span></code>
+list/array. You are free to edit the elements by hand, e.g. <code class="docutils literal notranslate"><span class="pre">fixed[3]</span>
+<span class="pre">=</span> <span class="pre">False</span></code>.  You can set all entries to True or False using the
+<code class="docutils literal notranslate"><span class="pre">all_fixed()</span></code> method from <code class="docutils literal notranslate"><span class="pre">simsopt.Optimizable</span></code> or
+<code class="docutils literal notranslate"><span class="pre">simsopt.optimizable</span></code>.  You can set individual entries using the
+string names of each dof via the <code class="docutils literal notranslate"><span class="pre">set_fixed()</span></code> method,
+e.g. <code class="docutils literal notranslate"><span class="pre">set_fixed(&quot;phiedge&quot;)</span></code> or <code class="docutils literal notranslate"><span class="pre">set_fixed(&quot;rc(0,0)&quot;,</span> <span class="pre">False)</span></code>.</p>
+</div>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>It may happen that one object depends on degrees of freedom owned by a
+different object. For instance, suppose we have an object <code class="docutils literal notranslate"><span class="pre">v</span></code> which
+is an instance of the <code class="docutils literal notranslate"><span class="pre">VMEC</span></code> class. Then <code class="docutils literal notranslate"><span class="pre">v</span></code> has as an attribute
+<code class="docutils literal notranslate"><span class="pre">boundary</span></code> which is an instance of the <code class="docutils literal notranslate"><span class="pre">Surface</span></code> class, describing
+the plasma boundary, and v’s functions depend on dofs owned by the
+<code class="docutils literal notranslate"><span class="pre">Surface</span></code>. Simsopt needs to detect this kind of dependency so that
+if a function of <code class="docutils literal notranslate"><span class="pre">v</span></code> is put into the objective function, the dofs of
+<code class="docutils literal notranslate"><span class="pre">boundary</span></code> must be included among the global dofs.</p>
+<p>To represent this situation, the <code class="docutils literal notranslate"><span class="pre">v</span></code> object must have an attribute
+<code class="docutils literal notranslate"><span class="pre">depends_on</span></code>, which is a list of strings. Each string describes the
+name of the attribute on which the object depends. In this specific
+example, <code class="docutils literal notranslate"><span class="pre">v.depends_on</span> <span class="pre">=</span> <span class="pre">[&quot;boundary&quot;]</span></code>. The elements of
+<code class="docutils literal notranslate"><span class="pre">depends_on</span></code> are strings rather than specific objects so that if we
+assign a new <code class="docutils literal notranslate"><span class="pre">Surface</span></code> object to <code class="docutils literal notranslate"><span class="pre">v.boundary</span></code>, simsopt will be
+able to automatically identify the new dependency.</p>
+<p>If your object does not have a <code class="docutils literal notranslate"><span class="pre">depends_on</span></code> attribute, simsopt will
+assume it does not depend on any other object.</p>
+<p>The order of entries in the <code class="docutils literal notranslate"><span class="pre">depends_on</span></code> list is important for two
+reasons. First, it specifies the order in which local dofs of
+dependencies are combined into the global dof vector. Second, and more
+importantly, it gives the order of entries for gradient vectors, if
+they are supplied. This issue is detailed in the next section.</p>
+</div>
+<div class="section" id="derivatives">
+<h2>Derivatives<a class="headerlink" href="#derivatives" title="Permalink to this headline">¶</a></h2>
+<p>Simsopt can manage both derivative-free and derivative-based
+optimization, automatically detecting whether derivative information
+is available.  For now, if derivatives are not available for all
+functions going into the objective function, then derivative-free
+optimization will be used; cases with a mixture of analytic and
+finite-difference derivatives are left for future work.</p>
+<p>To supply derivative information, your object must provide a function,
+property, or attribute with the same name as the one supplied to the
+objective function, but with a <code class="docutils literal notranslate"><span class="pre">d</span></code> added in front. For instance, if
+you used <code class="docutils literal notranslate"><span class="pre">obj.func()</span></code> to form the objective function, the derivative
+of <code class="docutils literal notranslate"><span class="pre">obj.func()</span></code> must be a function <code class="docutils literal notranslate"><span class="pre">obj.dfunc()</span></code>. Or, if you used
+a property <code class="docutils literal notranslate"><span class="pre">obj.prop</span></code> to form the objective function, the derivative
+of <code class="docutils literal notranslate"><span class="pre">obj.prop</span></code> must be a property <code class="docutils literal notranslate"><span class="pre">obj.dprop</span></code>. If simsopt detects
+that all of these functions/properties/attributes are present, it will
+use derivative-based optimization.  If one or more derivative
+functions is missing, a derivative-free algorithm will be used.</p>
+<p>These derivative functions must each return a 1D numpy array,
+containing the derivative of the original scalar function with respect
+to all local dofs owned both by the object <em>and any objects it depends
+on</em>. So if <code class="docutils literal notranslate"><span class="pre">obj</span></code> owns 10 dofs, and it depends on an object <code class="docutils literal notranslate"><span class="pre">dep</span></code>
+that owns 5 dofs, <code class="docutils literal notranslate"><span class="pre">obj.dfunc()</span></code> should return a 15-element vector.
+The 10 dofs owned directly by <code class="docutils literal notranslate"><span class="pre">obj</span></code> come first. The order of the
+dofs from dependencies is the order specified in the <code class="docutils literal notranslate"><span class="pre">depends_on</span></code>
+list.  Your object is responsible for gathering and manipulating
+derivative information from objects it depends on in order to form
+this combined gradient vector.</p>
+<p>The length of the gradient vector returned by your function is
+independent of whether or not any dofs are fixed. However, if a dof is
+fixed, the corresponding entry in the gradient vector will not be
+used, so you could return 0.0 for that entry in the vector rather than
+actually computing the derivative.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="testing.html" class="btn btn-neutral float-right" title="Testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Simsopt Development Team.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

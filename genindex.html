@@ -1,0 +1,1292 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Index &mdash; simsopt 0.0.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/equation_numbers.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> simsopt
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="problems.html">Defining optimization problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#optimizable-objects">Optimizable objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#specifying-functions-that-go-into-the-objective-function">Specifying functions that go into the objective function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#degrees-of-freedom-dofs">Degrees of freedom (“dofs”)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#helpful-functions">Helpful functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#fixing-degrees-of-freedom">Fixing degrees of freedom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#derivatives">Derivatives</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#python-test-suite">Python test suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#longer-examples">Longer examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#continuous-integration">Continuous integration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="source.html">Source code on GitHub</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="simsopt.html">simsopt package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="simsopt.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.core.html">simsopt.core package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.dofs">simsopt.core.dofs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.functions">simsopt.core.functions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.least_squares_problem">simsopt.core.least_squares_problem module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.optimizable">simsopt.core.optimizable module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.surface">simsopt.core.surface module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.util">simsopt.core.util module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.geo.html">simsopt.geo package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.biotsavart">simsopt.geo.biotsavart module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.config">simsopt.geo.config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.curve">simsopt.geo.curve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.fouriercurve">simsopt.geo.fouriercurve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.jit">simsopt.geo.jit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.magneticaxis">simsopt.geo.magneticaxis module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.objectives">simsopt.geo.objectives module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#simsopt-geo-parameterfreecurve-module">simsopt.geo.parameterfreecurve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.mhd.html">simsopt.mhd package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#module-simsopt.mhd.boozer">simsopt.mhd.boozer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#module-simsopt.mhd.spec">simsopt.mhd.spec module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#module-simsopt.mhd.vmec">simsopt.mhd.vmec module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#module-simsopt.mhd">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.solve.html">simsopt.solve package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#module-simsopt.solve.mpi_solve">simsopt.solve.mpi_solve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#module-simsopt.solve.serial_solve">simsopt.solve.serial_solve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#module-simsopt.solve">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.util.html">simsopt.util package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.util.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.util.html#module-simsopt.util.mpi">simsopt.util.mpi module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.util.html#module-simsopt.util">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="simsopt.html#module-simsopt">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">simsopt</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Index</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#J"><strong>J</strong></a>
+ | <a href="#K"><strong>K</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#Q"><strong>Q</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ | <a href="#X"><strong>X</strong></a>
+ 
+</div>
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.core.html#simsopt.core.functions.Adder">Adder (class in simsopt.core.functions)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.functions.Affine">Affine (class in simsopt.core.functions)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.optimizable.Optimizable.all_fixed">all_fixed() (simsopt.core.optimizable.Optimizable method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceGarabedian.allocate">allocate() (simsopt.core.surface.SurfaceGarabedian method)</a>
+
+      <ul>
+        <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.allocate">(simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.util.html#simsopt.util.mpi.MpiPartition.apart">apart() (simsopt.util.mpi.MpiPartition method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceGarabedian.area">area() (simsopt.core.surface.SurfaceGarabedian method)</a>
+
+      <ul>
+        <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.area">(simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceGarabedian.area_volume">area_volume() (simsopt.core.surface.SurfaceGarabedian method)</a>
+
+      <ul>
+        <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.area_volume">(simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.area_volume_pure">area_volume_pure() (in module simsopt.core.surface)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.geo.html#simsopt.geo.biotsavart.BiotSavart.B">B() (simsopt.geo.biotsavart.BiotSavart method)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.biotsavart.BiotSavart.B_and_dB_vjp">B_and_dB_vjp() (simsopt.geo.biotsavart.BiotSavart method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.geo.html#simsopt.geo.biotsavart.BiotSavart">BiotSavart (class in simsopt.geo.biotsavart)</a>
+</li>
+      <li><a href="simsopt.mhd.html#simsopt.mhd.boozer.Boozer">Boozer (class in simsopt.mhd.boozer)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.change_resolution">change_resolution() (simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.biotsavart.BiotSavart.clear_cached_properties">clear_cached_properties() (simsopt.geo.biotsavart.BiotSavart method)</a>
+</li>
+      <li><a href="simsopt.mhd.html#simsopt.mhd.boozer.closest_index">closest_index() (in module simsopt.mhd.boozer)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.geo.html#simsopt.geo.biotsavart.BiotSavart.compute">compute() (simsopt.geo.biotsavart.BiotSavart method)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.Curve">Curve (class in simsopt.geo.curve)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.objectives.curve_length_pure">curve_length_pure() (in module simsopt.geo.objectives)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.objectives.CurveLength">CurveLength (class in simsopt.geo.objectives)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.geo.html#simsopt.geo.biotsavart.BiotSavart.d2B_by_dXdcoilcurrents">d2B_by_dXdcoilcurrents() (simsopt.geo.biotsavart.BiotSavart method)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.biotsavart.BiotSavart.d2B_by_dXdX">d2B_by_dXdX() (simsopt.geo.biotsavart.BiotSavart method)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.biotsavart.BiotSavart.d3B_by_dXdXdcoilcurrents">d3B_by_dXdXdcoilcurrents() (simsopt.geo.biotsavart.BiotSavart method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.darea">darea() (simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.darea_volume">darea_volume() (simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.biotsavart.BiotSavart.dB_by_dcoilcurrents">dB_by_dcoilcurrents() (simsopt.geo.biotsavart.BiotSavart method)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.biotsavart.BiotSavart.dB_by_dX">dB_by_dX() (simsopt.geo.biotsavart.BiotSavart method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.functions.Adder.df">df() (simsopt.core.functions.Adder property)</a>
+
+      <ul>
+        <li><a href="simsopt.core.html#simsopt.core.functions.Identity.df">(simsopt.core.functions.Identity property)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.TestObject1.df">(simsopt.core.functions.TestObject1 property)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.TestObject2.df">(simsopt.core.functions.TestObject2 property)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.Curve.dfrenet_frame_by_dcoeff">dfrenet_frame_by_dcoeff() (simsopt.geo.curve.Curve method)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.JaxCurve.dgamma_by_dcoeff_impl">dgamma_by_dcoeff_impl() (simsopt.geo.curve.JaxCurve method)</a>
+
+      <ul>
+        <li><a href="simsopt.geo.html#simsopt.geo.curve.RotatedCurve.dgamma_by_dcoeff_impl">(simsopt.geo.curve.RotatedCurve method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.JaxCurve.dgamma_by_dcoeff_vjp">dgamma_by_dcoeff_vjp() (simsopt.geo.curve.JaxCurve method)</a>
+
+      <ul>
+        <li><a href="simsopt.geo.html#simsopt.geo.curve.RotatedCurve.dgamma_by_dcoeff_vjp">(simsopt.geo.curve.RotatedCurve method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.JaxCurve.dgammadash_by_dcoeff_impl">dgammadash_by_dcoeff_impl() (simsopt.geo.curve.JaxCurve method)</a>
+
+      <ul>
+        <li><a href="simsopt.geo.html#simsopt.geo.curve.RotatedCurve.dgammadash_by_dcoeff_impl">(simsopt.geo.curve.RotatedCurve method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.JaxCurve.dgammadash_by_dcoeff_vjp">dgammadash_by_dcoeff_vjp() (simsopt.geo.curve.JaxCurve method)</a>
+
+      <ul>
+        <li><a href="simsopt.geo.html#simsopt.geo.curve.RotatedCurve.dgammadash_by_dcoeff_vjp">(simsopt.geo.curve.RotatedCurve method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.JaxCurve.dgammadashdash_by_dcoeff_impl">dgammadashdash_by_dcoeff_impl() (simsopt.geo.curve.JaxCurve method)</a>
+
+      <ul>
+        <li><a href="simsopt.geo.html#simsopt.geo.curve.RotatedCurve.dgammadashdash_by_dcoeff_impl">(simsopt.geo.curve.RotatedCurve method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.JaxCurve.dgammadashdash_by_dcoeff_vjp">dgammadashdash_by_dcoeff_vjp() (simsopt.geo.curve.JaxCurve method)</a>
+
+      <ul>
+        <li><a href="simsopt.geo.html#simsopt.geo.curve.RotatedCurve.dgammadashdash_by_dcoeff_vjp">(simsopt.geo.curve.RotatedCurve method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.JaxCurve.dgammadashdashdash_by_dcoeff_impl">dgammadashdashdash_by_dcoeff_impl() (simsopt.geo.curve.JaxCurve method)</a>
+
+      <ul>
+        <li><a href="simsopt.geo.html#simsopt.geo.curve.RotatedCurve.dgammadashdashdash_by_dcoeff_impl">(simsopt.geo.curve.RotatedCurve method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.JaxCurve.dgammadashdashdash_by_dcoeff_vjp">dgammadashdashdash_by_dcoeff_vjp() (simsopt.geo.curve.JaxCurve method)</a>
+
+      <ul>
+        <li><a href="simsopt.geo.html#simsopt.geo.curve.RotatedCurve.dgammadashdashdash_by_dcoeff_vjp">(simsopt.geo.curve.RotatedCurve method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.Curve.dincremental_arclength_by_dcoeff_vjp">dincremental_arclength_by_dcoeff_vjp() (simsopt.geo.curve.Curve method)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.objectives.distance_pure">distance_pure() (in module simsopt.geo.objectives)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.functions.Adder.dJ">dJ() (simsopt.core.functions.Adder method)</a>
+
+      <ul>
+        <li><a href="simsopt.core.html#simsopt.core.functions.Affine.dJ">(simsopt.core.functions.Affine method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.Identity.dJ">(simsopt.core.functions.Identity method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.TestObject1.dJ">(simsopt.core.functions.TestObject1 method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.TestObject2.dJ">(simsopt.core.functions.TestObject2 method)</a>
+</li>
+        <li><a href="simsopt.geo.html#simsopt.geo.objectives.CurveLength.dJ">(simsopt.geo.objectives.CurveLength method)</a>
+</li>
+        <li><a href="simsopt.geo.html#simsopt.geo.objectives.LpCurveCurvature.dJ">(simsopt.geo.objectives.LpCurveCurvature method)</a>
+</li>
+        <li><a href="simsopt.geo.html#simsopt.geo.objectives.LpCurveTorsion.dJ">(simsopt.geo.objectives.LpCurveTorsion method)</a>
+</li>
+        <li><a href="simsopt.geo.html#simsopt.geo.objectives.MinimumDistance.dJ">(simsopt.geo.objectives.MinimumDistance method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.Curve.dkappa_by_dcoeff_impl">dkappa_by_dcoeff_impl() (simsopt.geo.curve.Curve method)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.Curve.dkappa_by_dcoeff_vjp">dkappa_by_dcoeff_vjp() (simsopt.geo.curve.Curve method)</a>
+
+      <ul>
+        <li><a href="simsopt.geo.html#simsopt.geo.curve.JaxCurve.dkappa_by_dcoeff_vjp">(simsopt.geo.curve.JaxCurve method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.Curve.dkappadash_by_dcoeff">dkappadash_by_dcoeff() (simsopt.geo.curve.Curve method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.dofs.Dofs">Dofs (class in simsopt.core.dofs)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.functions.Rosenbrock.dterm1">dterm1() (simsopt.core.functions.Rosenbrock method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.functions.Rosenbrock.dterm1prop">dterm1prop() (simsopt.core.functions.Rosenbrock property)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.functions.Rosenbrock.dterm2">dterm2() (simsopt.core.functions.Rosenbrock method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.functions.Rosenbrock.dterm2prop">dterm2prop() (simsopt.core.functions.Rosenbrock property)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.functions.Rosenbrock.dterms">dterms() (simsopt.core.functions.Rosenbrock method)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.Curve.dtorsion_by_dcoeff_impl">dtorsion_by_dcoeff_impl() (simsopt.geo.curve.Curve method)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.Curve.dtorsion_by_dcoeff_vjp">dtorsion_by_dcoeff_vjp() (simsopt.geo.curve.Curve method)</a>
+
+      <ul>
+        <li><a href="simsopt.geo.html#simsopt.geo.curve.JaxCurve.dtorsion_by_dcoeff_vjp">(simsopt.geo.curve.JaxCurve method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.dvolume">dvolume() (simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.core.html#simsopt.core.dofs.Dofs.f">f() (simsopt.core.dofs.Dofs method)</a>
+
+      <ul>
+        <li><a href="simsopt.core.html#simsopt.core.functions.Adder.f">(simsopt.core.functions.Adder property)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.Identity.f">(simsopt.core.functions.Identity property)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.Rosenbrock.f">(simsopt.core.functions.Rosenbrock method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.TestObject1.f">(simsopt.core.functions.TestObject1 property)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.TestObject2.f">(simsopt.core.functions.TestObject2 property)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.least_squares_problem.LeastSquaresProblem.f">(simsopt.core.least_squares_problem.LeastSquaresProblem method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.core.html#simsopt.core.least_squares_problem.LeastSquaresProblem.f_from_unshifted">f_from_unshifted() (simsopt.core.least_squares_problem.LeastSquaresProblem method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.least_squares_problem.LeastSquaresTerm.f_out">f_out() (simsopt.core.least_squares_problem.LeastSquaresTerm method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.core.html#simsopt.core.dofs.Dofs.fd_jac">fd_jac() (simsopt.core.dofs.Dofs method)</a>
+</li>
+      <li><a href="simsopt.solve.html#simsopt.solve.mpi_solve.fd_jac_mpi">fd_jac_mpi() (in module simsopt.solve.mpi_solve)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceGarabedian.fixed_range">fixed_range() (simsopt.core.surface.SurfaceGarabedian method)</a>
+
+      <ul>
+        <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.fixed_range">(simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.geo.html#simsopt.geo.fouriercurve.FourierCurve">FourierCurve (class in simsopt.geo.fouriercurve)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.Curve.frenet_frame">frenet_frame() (simsopt.geo.curve.Curve method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.from_focus">from_focus() (simsopt.core.surface.SurfaceRZFourier class method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.least_squares_problem.LeastSquaresTerm.from_sigma">from_sigma() (simsopt.core.least_squares_problem.LeastSquaresTerm class method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.optimizable.function_from_user">function_from_user() (in module simsopt.core.optimizable)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.JaxCurve.gamma_impl">gamma_impl() (simsopt.geo.curve.JaxCurve method)</a>
+
+      <ul>
+        <li><a href="simsopt.geo.html#simsopt.geo.curve.RotatedCurve.gamma_impl">(simsopt.geo.curve.RotatedCurve method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.JaxCurve.gammadash_impl">gammadash_impl() (simsopt.geo.curve.JaxCurve method)</a>
+
+      <ul>
+        <li><a href="simsopt.geo.html#simsopt.geo.curve.RotatedCurve.gammadash_impl">(simsopt.geo.curve.RotatedCurve method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.JaxCurve.gammadashdash_impl">gammadashdash_impl() (simsopt.geo.curve.JaxCurve method)</a>
+
+      <ul>
+        <li><a href="simsopt.geo.html#simsopt.geo.curve.RotatedCurve.gammadashdash_impl">(simsopt.geo.curve.RotatedCurve method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.JaxCurve.gammadashdashdash_impl">gammadashdashdash_impl() (simsopt.geo.curve.JaxCurve method)</a>
+
+      <ul>
+        <li><a href="simsopt.geo.html#simsopt.geo.curve.RotatedCurve.gammadashdashdash_impl">(simsopt.geo.curve.RotatedCurve method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.core.html#simsopt.core.optimizable.Optimizable.get">get() (simsopt.core.optimizable.Optimizable method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceGarabedian.get_Delta">get_Delta() (simsopt.core.surface.SurfaceGarabedian method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.functions.Adder.get_dofs">get_dofs() (simsopt.core.functions.Adder method)</a>
+
+      <ul>
+        <li><a href="simsopt.core.html#simsopt.core.functions.Affine.get_dofs">(simsopt.core.functions.Affine method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.Identity.get_dofs">(simsopt.core.functions.Identity method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.Rosenbrock.get_dofs">(simsopt.core.functions.Rosenbrock method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.TestObject1.get_dofs">(simsopt.core.functions.TestObject1 method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.TestObject2.get_dofs">(simsopt.core.functions.TestObject2 method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.optimizable.Optimizable.get_dofs">(simsopt.core.optimizable.Optimizable method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.optimizable.Target.get_dofs">(simsopt.core.optimizable.Target method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceGarabedian.get_dofs">(simsopt.core.surface.SurfaceGarabedian method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.get_dofs">(simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+        <li><a href="simsopt.geo.html#simsopt.geo.curve.RotatedCurve.get_dofs">(simsopt.geo.curve.RotatedCurve method)</a>
+</li>
+        <li><a href="simsopt.geo.html#simsopt.geo.fouriercurve.FourierCurve.get_dofs">(simsopt.geo.fouriercurve.FourierCurve method)</a>
+</li>
+        <li><a href="simsopt.geo.html#simsopt.geo.fouriercurve.JaxFourierCurve.get_dofs">(simsopt.geo.fouriercurve.JaxFourierCurve method)</a>
+</li>
+        <li><a href="simsopt.geo.html#simsopt.geo.magneticaxis.JaxStellaratorSymmetricCylindricalFourierCurve.get_dofs">(simsopt.geo.magneticaxis.JaxStellaratorSymmetricCylindricalFourierCurve method)</a>
+</li>
+        <li><a href="simsopt.geo.html#simsopt.geo.magneticaxis.StellaratorSymmetricCylindricalFourierCurve.get_dofs">(simsopt.geo.magneticaxis.StellaratorSymmetricCylindricalFourierCurve method)</a>
+</li>
+        <li><a href="simsopt.mhd.html#simsopt.mhd.boozer.Boozer.get_dofs">(simsopt.mhd.boozer.Boozer method)</a>
+</li>
+        <li><a href="simsopt.mhd.html#simsopt.mhd.boozer.Quasisymmetry.get_dofs">(simsopt.mhd.boozer.Quasisymmetry method)</a>
+</li>
+        <li><a href="simsopt.mhd.html#simsopt.mhd.spec.Residue.get_dofs">(simsopt.mhd.spec.Residue method)</a>
+</li>
+        <li><a href="simsopt.mhd.html#simsopt.mhd.spec.Spec.get_dofs">(simsopt.mhd.spec.Spec method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.core.html#simsopt.core.optimizable.Optimizable.get_fixed">get_fixed() (simsopt.core.optimizable.Optimizable method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.dofs.get_owners">get_owners() (in module simsopt.core.dofs)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.get_rc">get_rc() (simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.get_rs">get_rs() (simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.get_zc">get_zc() (simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.get_zs">get_zs() (simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.core.html#simsopt.core.functions.Identity">Identity (class in simsopt.core.functions)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.incremental_arclength_pure">incremental_arclength_pure() (in module simsopt.geo.curve)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.incremental_arclength_vjp">incremental_arclength_vjp() (in module simsopt.geo.curve)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.core.html#simsopt.core.optimizable.Optimizable.index">index() (simsopt.core.optimizable.Optimizable method)</a>
+</li>
+      <li><a href="simsopt.mhd.html#simsopt.mhd.spec.Spec.iota">iota() (simsopt.mhd.spec.Spec method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.util.isbool">isbool() (in module simsopt.core.util)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.util.isnumber">isnumber() (in module simsopt.core.util)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.core.html#simsopt.core.functions.Adder.J">J() (simsopt.core.functions.Adder method)</a>
+
+      <ul>
+        <li><a href="simsopt.core.html#simsopt.core.functions.Affine.J">(simsopt.core.functions.Affine method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.Identity.J">(simsopt.core.functions.Identity method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.TestObject1.J">(simsopt.core.functions.TestObject1 method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.TestObject2.J">(simsopt.core.functions.TestObject2 method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.optimizable.Target.J">(simsopt.core.optimizable.Target method)</a>
+</li>
+        <li><a href="simsopt.geo.html#simsopt.geo.objectives.CurveLength.J">(simsopt.geo.objectives.CurveLength method)</a>
+</li>
+        <li><a href="simsopt.geo.html#simsopt.geo.objectives.LpCurveCurvature.J">(simsopt.geo.objectives.LpCurveCurvature method)</a>
+</li>
+        <li><a href="simsopt.geo.html#simsopt.geo.objectives.LpCurveTorsion.J">(simsopt.geo.objectives.LpCurveTorsion method)</a>
+</li>
+        <li><a href="simsopt.geo.html#simsopt.geo.objectives.MinimumDistance.J">(simsopt.geo.objectives.MinimumDistance method)</a>
+</li>
+        <li><a href="simsopt.mhd.html#simsopt.mhd.boozer.Quasisymmetry.J">(simsopt.mhd.boozer.Quasisymmetry method)</a>
+</li>
+        <li><a href="simsopt.mhd.html#simsopt.mhd.spec.Residue.J">(simsopt.mhd.spec.Residue method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.core.html#simsopt.core.dofs.Dofs.jac">jac() (simsopt.core.dofs.Dofs method)</a>
+
+      <ul>
+        <li><a href="simsopt.core.html#simsopt.core.least_squares_problem.LeastSquaresProblem.jac">(simsopt.core.least_squares_problem.LeastSquaresProblem method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.JaxCurve">JaxCurve (class in simsopt.geo.curve)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.fouriercurve.JaxFourierCurve">JaxFourierCurve (class in simsopt.geo.fouriercurve)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.fouriercurve.jaxfouriercurve_pure">jaxfouriercurve_pure() (in module simsopt.geo.fouriercurve)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.magneticaxis.JaxStellaratorSymmetricCylindricalFourierCurve">JaxStellaratorSymmetricCylindricalFourierCurve (class in simsopt.geo.magneticaxis)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.jit.jit">jit() (in module simsopt.geo.jit)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.jit_area_volume_pure">jit_area_volume_pure() (in module simsopt.core.surface)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="K">K</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.Curve.kappa_impl">kappa_impl() (simsopt.geo.curve.Curve method)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.kappa_pure">kappa_pure() (in module simsopt.geo.curve)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.Curve.kappadash">kappadash() (simsopt.geo.curve.Curve method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.kappagrad0">kappagrad0() (in module simsopt.geo.curve)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.kappagrad1">kappagrad1() (in module simsopt.geo.curve)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.kappavjp0">kappavjp0() (in module simsopt.geo.curve)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.kappavjp1">kappavjp1() (in module simsopt.geo.curve)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.util.html#simsopt.util.mpi.MpiPartition.leaders_loop">leaders_loop() (simsopt.util.mpi.MpiPartition method)</a>
+</li>
+      <li><a href="simsopt.solve.html#simsopt.solve.mpi_solve.least_squares_mpi_solve">least_squares_mpi_solve() (in module simsopt.solve.mpi_solve)</a>
+</li>
+      <li><a href="simsopt.solve.html#simsopt.solve.serial_solve.least_squares_serial_solve">least_squares_serial_solve() (in module simsopt.solve.serial_solve)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.least_squares_problem.LeastSquaresProblem">LeastSquaresProblem (class in simsopt.core.least_squares_problem)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.least_squares_problem.LeastSquaresTerm">LeastSquaresTerm (class in simsopt.core.least_squares_problem)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.util.html#simsopt.util.mpi.log">log() (in module simsopt.util.mpi)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.objectives.Lp_curvature_pure">Lp_curvature_pure() (in module simsopt.geo.objectives)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.objectives.Lp_torsion_pure">Lp_torsion_pure() (in module simsopt.geo.objectives)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.objectives.LpCurveCurvature">LpCurveCurvature (class in simsopt.geo.objectives)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.objectives.LpCurveTorsion">LpCurveTorsion (class in simsopt.geo.objectives)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.make_names">make_names() (simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.objectives.MinimumDistance">MinimumDistance (class in simsopt.geo.objectives)</a>
+</li>
+      <li><a href="simsopt.util.html#simsopt.util.mpi.MpiPartition.mobilize_leaders">mobilize_leaders() (simsopt.util.mpi.MpiPartition method)</a>
+</li>
+      <li><a href="simsopt.util.html#simsopt.util.mpi.MpiPartition.mobilize_workers">mobilize_workers() (simsopt.util.mpi.MpiPartition method)</a>
+</li>
+      <li>
+    module
+
+      <ul>
+        <li><a href="simsopt.html#module-simsopt">simsopt</a>
+</li>
+        <li><a href="simsopt.core.html#module-simsopt.core">simsopt.core</a>
+</li>
+        <li><a href="simsopt.core.html#module-simsopt.core.dofs">simsopt.core.dofs</a>
+</li>
+        <li><a href="simsopt.core.html#module-simsopt.core.functions">simsopt.core.functions</a>
+</li>
+        <li><a href="simsopt.core.html#module-simsopt.core.least_squares_problem">simsopt.core.least_squares_problem</a>
+</li>
+        <li><a href="simsopt.core.html#module-simsopt.core.optimizable">simsopt.core.optimizable</a>
+</li>
+        <li><a href="simsopt.core.html#module-simsopt.core.surface">simsopt.core.surface</a>
+</li>
+        <li><a href="simsopt.core.html#module-simsopt.core.util">simsopt.core.util</a>
+</li>
+        <li><a href="simsopt.geo.html#module-simsopt.geo">simsopt.geo</a>
+</li>
+        <li><a href="simsopt.geo.html#module-simsopt.geo.biotsavart">simsopt.geo.biotsavart</a>
+</li>
+        <li><a href="simsopt.geo.html#module-simsopt.geo.config">simsopt.geo.config</a>
+</li>
+        <li><a href="simsopt.geo.html#module-simsopt.geo.curve">simsopt.geo.curve</a>
+</li>
+        <li><a href="simsopt.geo.html#module-simsopt.geo.fouriercurve">simsopt.geo.fouriercurve</a>
+</li>
+        <li><a href="simsopt.geo.html#module-simsopt.geo.jit">simsopt.geo.jit</a>
+</li>
+        <li><a href="simsopt.geo.html#module-simsopt.geo.magneticaxis">simsopt.geo.magneticaxis</a>
+</li>
+        <li><a href="simsopt.geo.html#module-simsopt.geo.objectives">simsopt.geo.objectives</a>
+</li>
+        <li><a href="simsopt.mhd.html#module-simsopt.mhd">simsopt.mhd</a>
+</li>
+        <li><a href="simsopt.mhd.html#module-simsopt.mhd.boozer">simsopt.mhd.boozer</a>
+</li>
+        <li><a href="simsopt.mhd.html#module-simsopt.mhd.spec">simsopt.mhd.spec</a>
+</li>
+        <li><a href="simsopt.mhd.html#module-simsopt.mhd.vmec">simsopt.mhd.vmec</a>
+</li>
+        <li><a href="simsopt.solve.html#module-simsopt.solve">simsopt.solve</a>
+</li>
+        <li><a href="simsopt.solve.html#module-simsopt.solve.mpi_solve">simsopt.solve.mpi_solve</a>
+</li>
+        <li><a href="simsopt.solve.html#module-simsopt.solve.serial_solve">simsopt.solve.serial_solve</a>
+</li>
+        <li><a href="simsopt.util.html#module-simsopt.util">simsopt.util</a>
+</li>
+        <li><a href="simsopt.util.html#module-simsopt.util.mpi">simsopt.util.mpi</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.solve.html#simsopt.solve.mpi_solve.mpi_leaders_task">mpi_leaders_task() (in module simsopt.solve.mpi_solve)</a>
+</li>
+      <li><a href="simsopt.solve.html#simsopt.solve.mpi_solve.mpi_workers_task">mpi_workers_task() (in module simsopt.solve.mpi_solve)</a>
+</li>
+      <li><a href="simsopt.util.html#simsopt.util.mpi.MpiPartition">MpiPartition (class in simsopt.util.mpi)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.mhd.html#simsopt.mhd.spec.nested_lists_to_array">nested_lists_to_array() (in module simsopt.mhd.spec)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.RotatedCurve.num_dofs">num_dofs() (simsopt.geo.curve.RotatedCurve method)</a>
+
+      <ul>
+        <li><a href="simsopt.geo.html#simsopt.geo.fouriercurve.JaxFourierCurve.num_dofs">(simsopt.geo.fouriercurve.JaxFourierCurve method)</a>
+</li>
+        <li><a href="simsopt.geo.html#simsopt.geo.magneticaxis.JaxStellaratorSymmetricCylindricalFourierCurve.num_dofs">(simsopt.geo.magneticaxis.JaxStellaratorSymmetricCylindricalFourierCurve method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.core.html#simsopt.core.least_squares_problem.LeastSquaresProblem.objective">objective() (simsopt.core.least_squares_problem.LeastSquaresProblem method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.least_squares_problem.LeastSquaresProblem.objective_from_shifted_f">objective_from_shifted_f() (simsopt.core.least_squares_problem.LeastSquaresProblem method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.core.html#simsopt.core.least_squares_problem.LeastSquaresProblem.objective_from_unshifted_f">objective_from_unshifted_f() (simsopt.core.least_squares_problem.LeastSquaresProblem method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.optimizable.Optimizable">Optimizable (class in simsopt.core.optimizable)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.optimizable.optimizable">optimizable() (in module simsopt.core.optimizable)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.Curve.plot">plot() (simsopt.geo.curve.Curve method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Q">Q</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.mhd.html#simsopt.mhd.boozer.Quasisymmetry">Quasisymmetry (class in simsopt.mhd.boozer)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.mhd.html#simsopt.mhd.boozer.Boozer.register">register() (simsopt.mhd.boozer.Boozer method)</a>
+</li>
+      <li><a href="simsopt.mhd.html#simsopt.mhd.vmec.reset_jacdt_flag">reset_jacdt_flag (in module simsopt.mhd.vmec)</a>
+</li>
+      <li><a href="simsopt.mhd.html#simsopt.mhd.spec.Residue">Residue (class in simsopt.mhd.spec)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.core.html#simsopt.core.functions.Rosenbrock">Rosenbrock (class in simsopt.core.functions)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.RotatedCurve">RotatedCurve (class in simsopt.geo.curve)</a>
+</li>
+      <li><a href="simsopt.mhd.html#simsopt.mhd.boozer.Boozer.run">run() (simsopt.mhd.boozer.Boozer method)</a>
+
+      <ul>
+        <li><a href="simsopt.mhd.html#simsopt.mhd.spec.Spec.run">(simsopt.mhd.spec.Spec method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.core.html#simsopt.core.least_squares_problem.LeastSquaresProblem.scale_dofs_jac">scale_dofs_jac() (simsopt.core.least_squares_problem.LeastSquaresProblem method)</a>
+</li>
+      <li><a href="simsopt.solve.html#simsopt.solve.serial_solve.serial_solve">serial_solve() (in module simsopt.solve.serial_solve)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.dofs.Dofs.set">set() (simsopt.core.dofs.Dofs method)</a>
+
+      <ul>
+        <li><a href="simsopt.core.html#simsopt.core.optimizable.Optimizable.set">(simsopt.core.optimizable.Optimizable method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceGarabedian.set_Delta">set_Delta() (simsopt.core.surface.SurfaceGarabedian method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.functions.Adder.set_dofs">set_dofs() (simsopt.core.functions.Adder method)</a>
+
+      <ul>
+        <li><a href="simsopt.core.html#simsopt.core.functions.Affine.set_dofs">(simsopt.core.functions.Affine method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.Identity.set_dofs">(simsopt.core.functions.Identity method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.Rosenbrock.set_dofs">(simsopt.core.functions.Rosenbrock method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.TestObject1.set_dofs">(simsopt.core.functions.TestObject1 method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.functions.TestObject2.set_dofs">(simsopt.core.functions.TestObject2 method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.optimizable.Optimizable.set_dofs">(simsopt.core.optimizable.Optimizable method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.optimizable.Target.set_dofs">(simsopt.core.optimizable.Target method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceGarabedian.set_dofs">(simsopt.core.surface.SurfaceGarabedian method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.set_dofs">(simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+        <li><a href="simsopt.geo.html#simsopt.geo.fouriercurve.FourierCurve.set_dofs">(simsopt.geo.fouriercurve.FourierCurve method)</a>
+</li>
+        <li><a href="simsopt.geo.html#simsopt.geo.magneticaxis.StellaratorSymmetricCylindricalFourierCurve.set_dofs">(simsopt.geo.magneticaxis.StellaratorSymmetricCylindricalFourierCurve method)</a>
+</li>
+        <li><a href="simsopt.mhd.html#simsopt.mhd.boozer.Boozer.set_dofs">(simsopt.mhd.boozer.Boozer method)</a>
+</li>
+        <li><a href="simsopt.mhd.html#simsopt.mhd.boozer.Quasisymmetry.set_dofs">(simsopt.mhd.boozer.Quasisymmetry method)</a>
+</li>
+        <li><a href="simsopt.mhd.html#simsopt.mhd.spec.Residue.set_dofs">(simsopt.mhd.spec.Residue method)</a>
+</li>
+        <li><a href="simsopt.mhd.html#simsopt.mhd.spec.Spec.set_dofs">(simsopt.mhd.spec.Spec method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.RotatedCurve.set_dofs_impl">set_dofs_impl() (simsopt.geo.curve.RotatedCurve method)</a>
+
+      <ul>
+        <li><a href="simsopt.geo.html#simsopt.geo.fouriercurve.JaxFourierCurve.set_dofs_impl">(simsopt.geo.fouriercurve.JaxFourierCurve method)</a>
+</li>
+        <li><a href="simsopt.geo.html#simsopt.geo.magneticaxis.JaxStellaratorSymmetricCylindricalFourierCurve.set_dofs_impl">(simsopt.geo.magneticaxis.JaxStellaratorSymmetricCylindricalFourierCurve method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.core.html#simsopt.core.optimizable.Optimizable.set_fixed">set_fixed() (simsopt.core.optimizable.Optimizable method)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.biotsavart.BiotSavart.set_points">set_points() (simsopt.geo.biotsavart.BiotSavart method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.set_rc">set_rc() (simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.set_rs">set_rs() (simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.set_zc">set_zc() (simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.set_zs">set_zs() (simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+      <li>
+    simsopt
+
+      <ul>
+        <li><a href="simsopt.html#module-simsopt">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.core
+
+      <ul>
+        <li><a href="simsopt.core.html#module-simsopt.core">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.core.dofs
+
+      <ul>
+        <li><a href="simsopt.core.html#module-simsopt.core.dofs">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.core.functions
+
+      <ul>
+        <li><a href="simsopt.core.html#module-simsopt.core.functions">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.core.least_squares_problem
+
+      <ul>
+        <li><a href="simsopt.core.html#module-simsopt.core.least_squares_problem">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.core.optimizable
+
+      <ul>
+        <li><a href="simsopt.core.html#module-simsopt.core.optimizable">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.core.surface
+
+      <ul>
+        <li><a href="simsopt.core.html#module-simsopt.core.surface">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    simsopt.core.util
+
+      <ul>
+        <li><a href="simsopt.core.html#module-simsopt.core.util">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.geo
+
+      <ul>
+        <li><a href="simsopt.geo.html#module-simsopt.geo">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.geo.biotsavart
+
+      <ul>
+        <li><a href="simsopt.geo.html#module-simsopt.geo.biotsavart">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.geo.config
+
+      <ul>
+        <li><a href="simsopt.geo.html#module-simsopt.geo.config">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.geo.curve
+
+      <ul>
+        <li><a href="simsopt.geo.html#module-simsopt.geo.curve">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.geo.fouriercurve
+
+      <ul>
+        <li><a href="simsopt.geo.html#module-simsopt.geo.fouriercurve">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.geo.jit
+
+      <ul>
+        <li><a href="simsopt.geo.html#module-simsopt.geo.jit">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.geo.magneticaxis
+
+      <ul>
+        <li><a href="simsopt.geo.html#module-simsopt.geo.magneticaxis">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.geo.objectives
+
+      <ul>
+        <li><a href="simsopt.geo.html#module-simsopt.geo.objectives">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.mhd
+
+      <ul>
+        <li><a href="simsopt.mhd.html#module-simsopt.mhd">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.mhd.boozer
+
+      <ul>
+        <li><a href="simsopt.mhd.html#module-simsopt.mhd.boozer">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.mhd.spec
+
+      <ul>
+        <li><a href="simsopt.mhd.html#module-simsopt.mhd.spec">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.mhd.vmec
+
+      <ul>
+        <li><a href="simsopt.mhd.html#module-simsopt.mhd.vmec">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.solve
+
+      <ul>
+        <li><a href="simsopt.solve.html#module-simsopt.solve">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.solve.mpi_solve
+
+      <ul>
+        <li><a href="simsopt.solve.html#module-simsopt.solve.mpi_solve">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.solve.serial_solve
+
+      <ul>
+        <li><a href="simsopt.solve.html#module-simsopt.solve.serial_solve">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.util
+
+      <ul>
+        <li><a href="simsopt.util.html#module-simsopt.util">module</a>
+</li>
+      </ul></li>
+      <li>
+    simsopt.util.mpi
+
+      <ul>
+        <li><a href="simsopt.util.html#module-simsopt.util.mpi">module</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.mhd.html#simsopt.mhd.spec.Spec">Spec (class in simsopt.mhd.spec)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.magneticaxis.StellaratorSymmetricCylindricalFourierCurve">StellaratorSymmetricCylindricalFourierCurve (class in simsopt.geo.magneticaxis)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.magneticaxis.stellaratorsymmetriccylindricalfouriercurve_pure">stellaratorsymmetriccylindricalfouriercurve_pure() (in module simsopt.geo.magneticaxis)</a>
+</li>
+      <li><a href="simsopt.util.html#simsopt.util.mpi.MpiPartition.stop_leaders">stop_leaders() (simsopt.util.mpi.MpiPartition method)</a>
+</li>
+      <li><a href="simsopt.util.html#simsopt.util.mpi.MpiPartition.stop_workers">stop_workers() (simsopt.util.mpi.MpiPartition method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.util.Struct">Struct (class in simsopt.core.util)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.Surface">Surface (class in simsopt.core.surface)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceGarabedian">SurfaceGarabedian (class in simsopt.core.surface)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier">SurfaceRZFourier (class in simsopt.core.surface)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.core.html#simsopt.core.optimizable.Target">Target (class in simsopt.core.optimizable)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.functions.Rosenbrock.term1">term1() (simsopt.core.functions.Rosenbrock method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.functions.Rosenbrock.term1prop">term1prop() (simsopt.core.functions.Rosenbrock property)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.functions.Rosenbrock.term2">term2() (simsopt.core.functions.Rosenbrock method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.functions.Rosenbrock.term2prop">term2prop() (simsopt.core.functions.Rosenbrock property)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.functions.Rosenbrock.terms">terms() (simsopt.core.functions.Rosenbrock method)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.functions.TestObject1">TestObject1 (class in simsopt.core.functions)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.functions.TestObject2">TestObject2 (class in simsopt.core.functions)</a>
+</li>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.to_Garabedian">to_Garabedian() (simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.core.html#simsopt.core.surface.Surface.to_RZFourier">to_RZFourier() (simsopt.core.surface.Surface method)</a>
+
+      <ul>
+        <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceGarabedian.to_RZFourier">(simsopt.core.surface.SurfaceGarabedian method)</a>
+</li>
+        <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.to_RZFourier">(simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+      </ul></li>
+      <li><a href="simsopt.util.html#simsopt.util.mpi.MpiPartition.together">together() (simsopt.util.mpi.MpiPartition method)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.Curve.torsion_impl">torsion_impl() (simsopt.geo.curve.Curve method)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.torsion_pure">torsion_pure() (in module simsopt.geo.curve)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.torsionvjp0">torsionvjp0() (in module simsopt.geo.curve)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.torsionvjp1">torsionvjp1() (in module simsopt.geo.curve)</a>
+</li>
+      <li><a href="simsopt.geo.html#simsopt.geo.curve.torsionvjp2">torsionvjp2() (in module simsopt.geo.curve)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.core.html#simsopt.core.util.unique">unique() (in module simsopt.core.util)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.mhd.html#simsopt.mhd.spec.Spec.update_resolution">update_resolution() (simsopt.mhd.spec.Spec method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceGarabedian.volume">volume() (simsopt.core.surface.SurfaceGarabedian method)</a>
+
+      <ul>
+        <li><a href="simsopt.core.html#simsopt.core.surface.SurfaceRZFourier.volume">(simsopt.core.surface.SurfaceRZFourier method)</a>
+</li>
+        <li><a href="simsopt.mhd.html#simsopt.mhd.spec.Spec.volume">(simsopt.mhd.spec.Spec method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.util.html#simsopt.util.mpi.MpiPartition.worker_loop">worker_loop() (simsopt.util.mpi.MpiPartition method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.util.html#simsopt.util.mpi.MpiPartition.write">write() (simsopt.util.mpi.MpiPartition method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="X">X</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="simsopt.core.html#simsopt.core.dofs.Dofs.x">x() (simsopt.core.dofs.Dofs property)</a>
+
+      <ul>
+        <li><a href="simsopt.core.html#simsopt.core.least_squares_problem.LeastSquaresProblem.x">(simsopt.core.least_squares_problem.LeastSquaresProblem property)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Simsopt Development Team.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

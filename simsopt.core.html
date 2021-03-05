@@ -1,0 +1,1191 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>simsopt.core package &mdash; simsopt 0.0.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/equation_numbers.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="simsopt.geo package" href="simsopt.geo.html" />
+    <link rel="prev" title="simsopt package" href="simsopt.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> simsopt
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="problems.html">Defining optimization problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#optimizable-objects">Optimizable objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#specifying-functions-that-go-into-the-objective-function">Specifying functions that go into the objective function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#degrees-of-freedom-dofs">Degrees of freedom (“dofs”)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#helpful-functions">Helpful functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#fixing-degrees-of-freedom">Fixing degrees of freedom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#derivatives">Derivatives</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#python-test-suite">Python test suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#longer-examples">Longer examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#continuous-integration">Continuous integration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="source.html">Source code on GitHub</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="simsopt.html">simsopt package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="simsopt.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">simsopt.core package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-simsopt.core.dofs">simsopt.core.dofs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-simsopt.core.functions">simsopt.core.functions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-simsopt.core.least_squares_problem">simsopt.core.least_squares_problem module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-simsopt.core.optimizable">simsopt.core.optimizable module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-simsopt.core.surface">simsopt.core.surface module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-simsopt.core.util">simsopt.core.util module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-simsopt.core">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.geo.html">simsopt.geo package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.biotsavart">simsopt.geo.biotsavart module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.config">simsopt.geo.config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.curve">simsopt.geo.curve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.fouriercurve">simsopt.geo.fouriercurve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.jit">simsopt.geo.jit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.magneticaxis">simsopt.geo.magneticaxis module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.objectives">simsopt.geo.objectives module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#simsopt-geo-parameterfreecurve-module">simsopt.geo.parameterfreecurve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.mhd.html">simsopt.mhd package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#module-simsopt.mhd.boozer">simsopt.mhd.boozer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#module-simsopt.mhd.spec">simsopt.mhd.spec module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#module-simsopt.mhd.vmec">simsopt.mhd.vmec module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#module-simsopt.mhd">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.solve.html">simsopt.solve package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#module-simsopt.solve.mpi_solve">simsopt.solve.mpi_solve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#module-simsopt.solve.serial_solve">simsopt.solve.serial_solve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#module-simsopt.solve">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.util.html">simsopt.util package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.util.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.util.html#module-simsopt.util.mpi">simsopt.util.mpi module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.util.html#module-simsopt.util">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="simsopt.html#module-simsopt">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">simsopt</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="simsopt.html">simsopt package</a> &raquo;</li>
+        
+      <li>simsopt.core package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/simsopt.core.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="simsopt-core-package">
+<h1>simsopt.core package<a class="headerlink" href="#simsopt-core-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-simsopt.core.dofs">
+<span id="simsopt-core-dofs-module"></span><h2>simsopt.core.dofs module<a class="headerlink" href="#module-simsopt.core.dofs" title="Permalink to this headline">¶</a></h2>
+<p>This module provides the collect_dofs() function, used by least-squares
+and general optimization problems.</p>
+<p>This module should not depend on anything involving communication
+(e.g. MPI) or on specific types of optimization problems.</p>
+<dl class="py class">
+<dt id="simsopt.core.dofs.Dofs">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.core.dofs.</span></code><code class="sig-name descname"><span class="pre">Dofs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">funcs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.dofs.Dofs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class holds data related to the vector of degrees of freedom
+that have been combined from multiple optimizable objects, keeping
+only the non-fixed dofs.</p>
+<dl class="py method">
+<dt id="simsopt.core.dofs.Dofs.f">
+<code class="sig-name descname"><span class="pre">f</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.dofs.Dofs.f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the vector of function values. Result is a 1D numpy array.</p>
+<p>If the argument x is not supplied, the functions will be
+evaluated for the present state vector. If x is supplied, then
+first set_dofs() will be called for each object to set the
+global state vector to x.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.dofs.Dofs.fd_jac">
+<code class="sig-name descname"><span class="pre">fd_jac</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-07</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.dofs.Dofs.fd_jac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the finite-difference Jacobian of the functions with
+respect to all non-fixed degrees of freedom. Either a 1-sided
+or centered-difference approximation is used, with step size
+eps.</p>
+<p>If the argument x is not supplied, the Jacobian will be
+evaluated for the present state vector. If x is supplied, then
+first get_dofs() will be called for each object to set the
+global state vector to x.</p>
+<p>No parallelization is used here.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.dofs.Dofs.jac">
+<code class="sig-name descname"><span class="pre">jac</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.dofs.Dofs.jac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Jacobian, i.e. the gradients of all the functions that
+were originally supplied to Dofs(). Result is a 2D numpy
+array.</p>
+<p>If the argument x is not supplied, the Jacobian will be
+evaluated for the present state vector. If x is supplied, then
+first set_dofs() will be called for each object to set the
+global state vector to x.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.dofs.Dofs.set">
+<code class="sig-name descname"><span class="pre">set</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.dofs.Dofs.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call set_dofs() for each object, given a global state vector x.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.dofs.Dofs.x">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">x</span></code><a class="headerlink" href="#simsopt.core.dofs.Dofs.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call get_dofs() for each object, to assemble an up-to-date version
+of the state vector.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.core.dofs.get_owners">
+<code class="sig-prename descclassname"><span class="pre">simsopt.core.dofs.</span></code><code class="sig-name descname"><span class="pre">get_owners</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">owners_so_far</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.dofs.get_owners" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an object, return a list of objects that own any
+degrees of freedom, including both the input object and any of its
+dependendents, if there are any.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-simsopt.core.functions">
+<span id="simsopt-core-functions-module"></span><h2>simsopt.core.functions module<a class="headerlink" href="#module-simsopt.core.functions" title="Permalink to this headline">¶</a></h2>
+<p>This module provides a few minimal optimizable objects, each
+representing a function. These functions are mostly used for testing.</p>
+<dl class="py class">
+<dt id="simsopt.core.functions.Adder">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.core.functions.</span></code><code class="sig-name descname"><span class="pre">Adder</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Adder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simsopt.core.optimizable.Optimizable" title="simsopt.core.optimizable.Optimizable"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.core.optimizable.Optimizable</span></code></a></p>
+<p>This class defines a minimal object that can be optimized. It has
+n degrees of freedom, and has a function that just returns the sum
+of these dofs. This class is used for testing.</p>
+<dl class="py method">
+<dt id="simsopt.core.functions.Adder.J">
+<code class="sig-name descname"><span class="pre">J</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Adder.J" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the sum of the degrees of freedom.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Adder.dJ">
+<code class="sig-name descname"><span class="pre">dJ</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Adder.dJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Adder.df">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">df</span></code><a class="headerlink" href="#simsopt.core.functions.Adder.df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as the function dJ(), but a property instead of a function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Adder.f">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">f</span></code><a class="headerlink" href="#simsopt.core.functions.Adder.f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as the function J(), but a property instead of a function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Adder.get_dofs">
+<code class="sig-name descname"><span class="pre">get_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Adder.get_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Adder.set_dofs">
+<code class="sig-name descname"><span class="pre">set_dofs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Adder.set_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="simsopt.core.functions.Affine">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.core.functions.</span></code><code class="sig-name descname"><span class="pre">Affine</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nparams</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nvals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Affine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simsopt.core.optimizable.Optimizable" title="simsopt.core.optimizable.Optimizable"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.core.optimizable.Optimizable</span></code></a></p>
+<p>This class represents a random affine (i.e. linear plus constant)
+transformation from R^n to R^m.</p>
+<dl class="py method">
+<dt id="simsopt.core.functions.Affine.J">
+<code class="sig-name descname"><span class="pre">J</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Affine.J" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Affine.dJ">
+<code class="sig-name descname"><span class="pre">dJ</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Affine.dJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Affine.get_dofs">
+<code class="sig-name descname"><span class="pre">get_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Affine.get_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Affine.set_dofs">
+<code class="sig-name descname"><span class="pre">set_dofs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Affine.set_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="simsopt.core.functions.Identity">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.core.functions.</span></code><code class="sig-name descname"><span class="pre">Identity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Identity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simsopt.core.optimizable.Optimizable" title="simsopt.core.optimizable.Optimizable"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.core.optimizable.Optimizable</span></code></a></p>
+<p>This class represents a term in an objective function which is just
+the identity. It has one degree of freedom, and the output of the function
+is equal to this degree of freedom.</p>
+<dl class="py method">
+<dt id="simsopt.core.functions.Identity.J">
+<code class="sig-name descname"><span class="pre">J</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Identity.J" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Identity.dJ">
+<code class="sig-name descname"><span class="pre">dJ</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Identity.dJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Identity.df">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">df</span></code><a class="headerlink" href="#simsopt.core.functions.Identity.df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as the function dJ(), but a property instead of a function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Identity.f">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">f</span></code><a class="headerlink" href="#simsopt.core.functions.Identity.f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as the function J(), but a property instead of a function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Identity.get_dofs">
+<code class="sig-name descname"><span class="pre">get_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Identity.get_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Identity.set_dofs">
+<code class="sig-name descname"><span class="pre">set_dofs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Identity.set_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="simsopt.core.functions.Rosenbrock">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.core.functions.</span></code><code class="sig-name descname"><span class="pre">Rosenbrock</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Rosenbrock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simsopt.core.optimizable.Optimizable" title="simsopt.core.optimizable.Optimizable"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.core.optimizable.Optimizable</span></code></a></p>
+<p>This class defines a minimal object that can be optimized.</p>
+<dl class="py method">
+<dt id="simsopt.core.functions.Rosenbrock.dterm1">
+<code class="sig-name descname"><span class="pre">dterm1</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Rosenbrock.dterm1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the gradient of term1</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Rosenbrock.dterm1prop">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">dterm1prop</span></code><a class="headerlink" href="#simsopt.core.functions.Rosenbrock.dterm1prop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as dterm1, but a property rather than a callable function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Rosenbrock.dterm2">
+<code class="sig-name descname"><span class="pre">dterm2</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Rosenbrock.dterm2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the gradient of term2</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Rosenbrock.dterm2prop">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">dterm2prop</span></code><a class="headerlink" href="#simsopt.core.functions.Rosenbrock.dterm2prop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as dterm2, but a property rather than a callable function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Rosenbrock.dterms">
+<code class="sig-name descname"><span class="pre">dterms</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Rosenbrock.dterms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the 2x2 Jacobian for term1 and term2.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Rosenbrock.f">
+<code class="sig-name descname"><span class="pre">f</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Rosenbrock.f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the total function, squaring and summing the two terms.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Rosenbrock.get_dofs">
+<code class="sig-name descname"><span class="pre">get_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Rosenbrock.get_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Rosenbrock.set_dofs">
+<code class="sig-name descname"><span class="pre">set_dofs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Rosenbrock.set_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Rosenbrock.term1">
+<code class="sig-name descname"><span class="pre">term1</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Rosenbrock.term1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the first of the two quantities that is squared and summed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Rosenbrock.term1prop">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">term1prop</span></code><a class="headerlink" href="#simsopt.core.functions.Rosenbrock.term1prop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as term1, but a property rather than a callable function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Rosenbrock.term2">
+<code class="sig-name descname"><span class="pre">term2</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Rosenbrock.term2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the second of the two quantities that is squared and summed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Rosenbrock.term2prop">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">term2prop</span></code><a class="headerlink" href="#simsopt.core.functions.Rosenbrock.term2prop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as term2, but a property rather than a callable function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.Rosenbrock.terms">
+<code class="sig-name descname"><span class="pre">terms</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.Rosenbrock.terms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns term1 and term2 together as a 2-element numpy vector.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="simsopt.core.functions.TestObject1">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.core.functions.</span></code><code class="sig-name descname"><span class="pre">TestObject1</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.TestObject1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simsopt.core.optimizable.Optimizable" title="simsopt.core.optimizable.Optimizable"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.core.optimizable.Optimizable</span></code></a></p>
+<p>This is an optimizable object used for testing. It depends on two
+sub-objects, both of type Adder.</p>
+<dl class="py method">
+<dt id="simsopt.core.functions.TestObject1.J">
+<code class="sig-name descname"><span class="pre">J</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.TestObject1.J" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.TestObject1.dJ">
+<code class="sig-name descname"><span class="pre">dJ</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.TestObject1.dJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.TestObject1.df">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">df</span></code><a class="headerlink" href="#simsopt.core.functions.TestObject1.df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as dJ() but a property instead of a function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.TestObject1.f">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">f</span></code><a class="headerlink" href="#simsopt.core.functions.TestObject1.f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as J() but a property instead of a function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.TestObject1.get_dofs">
+<code class="sig-name descname"><span class="pre">get_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.TestObject1.get_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.TestObject1.set_dofs">
+<code class="sig-name descname"><span class="pre">set_dofs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.TestObject1.set_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="simsopt.core.functions.TestObject2">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.core.functions.</span></code><code class="sig-name descname"><span class="pre">TestObject2</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.TestObject2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simsopt.core.optimizable.Optimizable" title="simsopt.core.optimizable.Optimizable"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.core.optimizable.Optimizable</span></code></a></p>
+<p>This is an optimizable object used for testing. It depends on two
+sub-objects, both of type Adder.</p>
+<dl class="py method">
+<dt id="simsopt.core.functions.TestObject2.J">
+<code class="sig-name descname"><span class="pre">J</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.TestObject2.J" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.TestObject2.dJ">
+<code class="sig-name descname"><span class="pre">dJ</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.TestObject2.dJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.TestObject2.df">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">df</span></code><a class="headerlink" href="#simsopt.core.functions.TestObject2.df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as dJ() but a property instead of a function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.TestObject2.f">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">f</span></code><a class="headerlink" href="#simsopt.core.functions.TestObject2.f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as J() but a property instead of a function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.TestObject2.get_dofs">
+<code class="sig-name descname"><span class="pre">get_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.TestObject2.get_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.functions.TestObject2.set_dofs">
+<code class="sig-name descname"><span class="pre">set_dofs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.functions.TestObject2.set_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-simsopt.core.least_squares_problem">
+<span id="simsopt-core-least-squares-problem-module"></span><h2>simsopt.core.least_squares_problem module<a class="headerlink" href="#module-simsopt.core.least_squares_problem" title="Permalink to this headline">¶</a></h2>
+<p>This module provides the LeastSquaresProblem class, as well as the
+associated class LeastSquaresTerm.</p>
+<dl class="py class">
+<dt id="simsopt.core.least_squares_problem.LeastSquaresProblem">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.core.least_squares_problem.</span></code><code class="sig-name descname"><span class="pre">LeastSquaresProblem</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">terms</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.least_squares_problem.LeastSquaresProblem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class represents a nonlinear-least-squares optimization
+problem. The class stores a list of LeastSquaresTerm objects.</p>
+<dl class="py method">
+<dt id="simsopt.core.least_squares_problem.LeastSquaresProblem.f">
+<code class="sig-name descname"><span class="pre">f</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.least_squares_problem.LeastSquaresProblem.f" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns the vector of residuals for a given state
+vector x.  This function is passed to scipy.optimize, and
+could be passed to other optimization algorithms too.  This
+function differs from Dofs.f() because it shifts and scales
+the terms.</p>
+<p>If the argument x is not supplied, the residuals will be
+evaluated for the present state vector. If x is supplied, then
+first set_dofs() will be called for each object to set the
+global state vector to x.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.least_squares_problem.LeastSquaresProblem.f_from_unshifted">
+<code class="sig-name descname"><span class="pre">f_from_unshifted</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_unshifted</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.least_squares_problem.LeastSquaresProblem.f_from_unshifted" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function takes a vector of function values, as returned by
+dofs, and shifts and scales them. This function does not
+actually evaluate the dofs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.least_squares_problem.LeastSquaresProblem.jac">
+<code class="sig-name descname"><span class="pre">jac</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.least_squares_problem.LeastSquaresProblem.jac" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method gives the Jacobian of the residuals with respect to
+the parameters, if it is available, given the state vector
+x. This function is passed to scipy.optimize, and could be
+passed to other optimization algorithms too. This Jacobian
+differs from the one returned by Dofs() because it accounts
+for the ‘weight’ scale factors.</p>
+<p>If the argument x is not supplied, the Jacobian will be
+evaluated for the present state vector. If x is supplied, then
+first set_dofs() will be called for each object to set the
+global state vector to x.</p>
+<p>kwargs is passed to Dofs.fd_jac().</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.least_squares_problem.LeastSquaresProblem.objective">
+<code class="sig-name descname"><span class="pre">objective</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.least_squares_problem.LeastSquaresProblem.objective" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the value of the total objective function, by summing
+the terms.</p>
+<p>If the argument x is not supplied, the objective will be
+evaluated for the present state vector. If x is supplied, then
+first set_dofs() will be called for each object to set the
+global state vector to x.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.least_squares_problem.LeastSquaresProblem.objective_from_shifted_f">
+<code class="sig-name descname"><span class="pre">objective_from_shifted_f</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.least_squares_problem.LeastSquaresProblem.objective_from_shifted_f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a vector of functions that has already been evaluated,
+and already shifted and scaled, convert the result to the
+overall scalar objective function, without any further
+function evaluations. This routine is useful if we have
+already evaluated the residuals and we want to convert the
+result to the overall scalar objective without the
+computational expense of further function evaluations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.least_squares_problem.LeastSquaresProblem.objective_from_unshifted_f">
+<code class="sig-name descname"><span class="pre">objective_from_unshifted_f</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_unshifted</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.least_squares_problem.LeastSquaresProblem.objective_from_unshifted_f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a vector of functions that has already been evaluated,
+but not yet shifted and scaled, convert the result to the
+overall scalar objective function, without any further
+function evaluations. This routine is useful if we have
+already evaluated the residuals and we want to convert the
+result to the overall scalar objective without the
+computational expense of further function evaluations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.least_squares_problem.LeastSquaresProblem.scale_dofs_jac">
+<code class="sig-name descname"><span class="pre">scale_dofs_jac</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jmat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.least_squares_problem.LeastSquaresProblem.scale_dofs_jac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a Jacobian matrix j for the Dofs() associated to this
+least-squares problem, return the scaled Jacobian matrix for
+the least-squares residual terms. This function does not
+actually compute the Dofs() Jacobian, since sometimes we would
+compute that directly whereas other times we might compute it
+with serial or parallel finite differences. The provided jmat
+is scaled in-place.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.least_squares_problem.LeastSquaresProblem.x">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">x</span></code><a class="headerlink" href="#simsopt.core.least_squares_problem.LeastSquaresProblem.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the state vector.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="simsopt.core.least_squares_problem.LeastSquaresTerm">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.core.least_squares_problem.</span></code><code class="sig-name descname"><span class="pre">LeastSquaresTerm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">goal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.least_squares_problem.LeastSquaresTerm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class represents one term in a nonlinear-least-squares
+problem. A LeastSquaresTerm instance has 3 basic attributes: a
+function (called f_in), a goal value (called goal), and a weight
+(sigma).  The overall value of the term is:</p>
+<p>f_out = weight * (f_in - goal) ** 2.</p>
+<dl class="py method">
+<dt id="simsopt.core.least_squares_problem.LeastSquaresTerm.f_out">
+<code class="sig-name descname"><span class="pre">f_out</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.least_squares_problem.LeastSquaresTerm.f_out" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the overall value of this least-squares term.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.least_squares_problem.LeastSquaresTerm.from_sigma">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_sigma</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">goal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.least_squares_problem.LeastSquaresTerm.from_sigma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Define the LeastSquaresTerm with sigma = 1 / sqrt(weight), so</p>
+<p>f_out = ((f_in - goal) / sigma) ** 2.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-simsopt.core.optimizable">
+<span id="simsopt-core-optimizable-module"></span><h2>simsopt.core.optimizable module<a class="headerlink" href="#module-simsopt.core.optimizable" title="Permalink to this headline">¶</a></h2>
+<p>This module provides classes and functions that are useful for
+setting up optimizable objects and objective functions.</p>
+<dl class="py class">
+<dt id="simsopt.core.optimizable.Optimizable">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.core.optimizable.</span></code><code class="sig-name descname"><span class="pre">Optimizable</span></code><a class="headerlink" href="#simsopt.core.optimizable.Optimizable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This base class provides some useful features for optimizable functions.</p>
+<dl class="py method">
+<dt id="simsopt.core.optimizable.Optimizable.all_fixed">
+<code class="sig-name descname"><span class="pre">all_fixed</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fixed_new</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.optimizable.Optimizable.all_fixed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the ‘fixed’ attribute for all degrees of freedom.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.optimizable.Optimizable.get">
+<code class="sig-name descname"><span class="pre">get</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dof_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.optimizable.Optimizable.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a degree of freedom specified by its string name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.optimizable.Optimizable.get_dofs">
+<code class="sig-name descname"><span class="pre">get_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.optimizable.Optimizable.get_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.optimizable.Optimizable.get_fixed">
+<code class="sig-name descname"><span class="pre">get_fixed</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dof_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.optimizable.Optimizable.get_fixed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the fixed attribute for a given degree of freedon, specified by dof_str.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.optimizable.Optimizable.index">
+<code class="sig-name descname"><span class="pre">index</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dof_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.optimizable.Optimizable.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a string dof_str, returns the index in the dof array whose
+name matches dof_str. If dof_str does not match any of the
+names, ValueError will be raised.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.optimizable.Optimizable.set">
+<code class="sig-name descname"><span class="pre">set</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dof_str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newval</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.optimizable.Optimizable.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a degree of freedom specified by its string name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.optimizable.Optimizable.set_dofs">
+<code class="sig-name descname"><span class="pre">set_dofs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.optimizable.Optimizable.set_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.optimizable.Optimizable.set_fixed">
+<code class="sig-name descname"><span class="pre">set_fixed</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dof_str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_new</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.optimizable.Optimizable.set_fixed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the fixed attribute for a given degree of freedom, specified by dof_str.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="simsopt.core.optimizable.Target">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.core.optimizable.</span></code><code class="sig-name descname"><span class="pre">Target</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.optimizable.Target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simsopt.core.optimizable.Optimizable" title="simsopt.core.optimizable.Optimizable"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.core.optimizable.Optimizable</span></code></a></p>
+<p>Given an attribute of an object, which typically would be a
+&#64;property, form a callable function that can be used as a target
+for optimization.</p>
+<dl class="py method">
+<dt id="simsopt.core.optimizable.Target.J">
+<code class="sig-name descname"><span class="pre">J</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.optimizable.Target.J" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.optimizable.Target.get_dofs">
+<code class="sig-name descname"><span class="pre">get_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.optimizable.Target.get_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.optimizable.Target.set_dofs">
+<code class="sig-name descname"><span class="pre">set_dofs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.optimizable.Target.set_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.core.optimizable.function_from_user">
+<code class="sig-prename descclassname"><span class="pre">simsopt.core.optimizable.</span></code><code class="sig-name descname"><span class="pre">function_from_user</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.optimizable.function_from_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a user-supplied “target” to be optimized, extract the
+associated callable function.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.core.optimizable.optimizable">
+<code class="sig-prename descclassname"><span class="pre">simsopt.core.optimizable.</span></code><code class="sig-name descname"><span class="pre">optimizable</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.optimizable.optimizable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given any object, add attributes like fixed, mins, and maxs. fixed
+= False by default. Also, add the other methods of Optimizable to
+the object.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-simsopt.core.surface">
+<span id="simsopt-core-surface-module"></span><h2>simsopt.core.surface module<a class="headerlink" href="#module-simsopt.core.surface" title="Permalink to this headline">¶</a></h2>
+<p>This module provides several classes for representing toroidal
+surfaces.  There is a base class Surface, and several child classes
+corresponding to different discrete representations.</p>
+<dl class="py class">
+<dt id="simsopt.core.surface.Surface">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.core.surface.</span></code><code class="sig-name descname"><span class="pre">Surface</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nfp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stelsym</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.Surface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simsopt.core.optimizable.Optimizable" title="simsopt.core.optimizable.Optimizable"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.core.optimizable.Optimizable</span></code></a></p>
+<p>Surface is a base class for various representations of toroidal
+surfaces in simsopt.</p>
+<dl class="py method">
+<dt id="simsopt.core.surface.Surface.to_RZFourier">
+<code class="sig-name descname"><span class="pre">to_RZFourier</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.Surface.to_RZFourier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a SurfaceRZFourier instance corresponding to the shape of this
+surface.  All subclasses should implement this abstract
+method.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="simsopt.core.surface.SurfaceGarabedian">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.core.surface.</span></code><code class="sig-name descname"><span class="pre">SurfaceGarabedian</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nfp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceGarabedian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simsopt.core.surface.Surface" title="simsopt.core.surface.Surface"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.core.surface.Surface</span></code></a></p>
+<p>SurfaceGarabedian represents a toroidal surface for which the
+shape is parameterized using Garabedian’s Delta_{m,n}
+coefficients.</p>
+<p>The present implementation assumes stellarator symmetry. Note that
+non-stellarator-symmetric surfaces require that the Delta_{m,n}
+coefficients be imaginary.</p>
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceGarabedian.allocate">
+<code class="sig-name descname"><span class="pre">allocate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceGarabedian.allocate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the array for the Delta_{m,n} coefficients.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceGarabedian.area">
+<code class="sig-name descname"><span class="pre">area</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceGarabedian.area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the area of the surface.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceGarabedian.area_volume">
+<code class="sig-name descname"><span class="pre">area_volume</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceGarabedian.area_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the surface area and the volume enclosed by the surface.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceGarabedian.fixed_range">
+<code class="sig-name descname"><span class="pre">fixed_range</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceGarabedian.fixed_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the ‘fixed’ property for a range of m and n values.</p>
+<p>All modes with m in the interval [mmin, mmax] and n in the
+interval [nmin, nmax] will have their fixed property set to
+the value of the ‘fixed’ parameter. Note that mmax and nmax
+are included (unlike the upper bound in python’s range(min,
+max).)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceGarabedian.get_Delta">
+<code class="sig-name descname"><span class="pre">get_Delta</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceGarabedian.get_Delta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a particular Delta_{m,n} coefficient.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceGarabedian.get_dofs">
+<code class="sig-name descname"><span class="pre">get_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceGarabedian.get_dofs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a 1D numpy array with all the degrees of freedom.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceGarabedian.set_Delta">
+<code class="sig-name descname"><span class="pre">set_Delta</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceGarabedian.set_Delta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a particular Delta_{m,n} coefficient.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceGarabedian.set_dofs">
+<code class="sig-name descname"><span class="pre">set_dofs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceGarabedian.set_dofs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the shape coefficients from a 1D list/array</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceGarabedian.to_RZFourier">
+<code class="sig-name descname"><span class="pre">to_RZFourier</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceGarabedian.to_RZFourier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a SurfaceRZFourier object with the identical shape.</p>
+<p>For a derivation of the transformation here, see
+<a class="reference external" href="https://terpconnect.umd.edu/~mattland/assets/notes/toroidal_surface_parameterizations.pdf">https://terpconnect.umd.edu/~mattland/assets/notes/toroidal_surface_parameterizations.pdf</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceGarabedian.volume">
+<code class="sig-name descname"><span class="pre">volume</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceGarabedian.volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the volume of the surface.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="simsopt.core.surface.SurfaceRZFourier">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.core.surface.</span></code><code class="sig-name descname"><span class="pre">SurfaceRZFourier</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nfp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stelsym</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mpol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ntor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simsopt.core.surface.Surface" title="simsopt.core.surface.Surface"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.core.surface.Surface</span></code></a></p>
+<p>SurfaceRZFourier is a surface that is represented in cylindrical
+coordinates using the following Fourier series:</p>
+<dl class="simple">
+<dt>r(theta, phi) = sum_{m=0}^{mpol} sum_{n=-ntor}^{ntor} [</dt><dd><p>r_{c,m,n} cos(m   heta - n nfp phi)
++ r_{s,m,n} sin(m         heta - n nfp phi) ]</p>
+</dd>
+</dl>
+<p>and the same for z(theta, phi).</p>
+<p>Here, (r, phi, z) are standard cylindrical coordinates, and theta
+is any poloidal angle.</p>
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.allocate">
+<code class="sig-name descname"><span class="pre">allocate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.allocate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the arrays for the rc, rs, zc, and zs coefficients.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.area">
+<code class="sig-name descname"><span class="pre">area</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the area of the surface.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.area_volume">
+<code class="sig-name descname"><span class="pre">area_volume</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.area_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the surface area and the volume enclosed by the surface.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.change_resolution">
+<code class="sig-name descname"><span class="pre">change_resolution</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mpol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ntor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.change_resolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the values of mpol and ntor. Any new Fourier amplitudes
+will have a magnitude of zero.  Any previous nonzero Fourier
+amplitudes that are not within the new range will be
+discarded.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.darea">
+<code class="sig-name descname"><span class="pre">darea</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.darea" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the area of the surface.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.darea_volume">
+<code class="sig-name descname"><span class="pre">darea_volume</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.darea_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the derivative of the surface area and the volume enclosed
+by the surface.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.dvolume">
+<code class="sig-name descname"><span class="pre">dvolume</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.dvolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the volume of the surface.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.fixed_range">
+<code class="sig-name descname"><span class="pre">fixed_range</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.fixed_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the ‘fixed’ property for a range of m and n values.</p>
+<p>All modes with m in the interval [mmin, mmax] and n in the
+interval [nmin, nmax] will have their fixed property set to
+the value of the ‘fixed’ parameter. Note that mmax and nmax
+are included (unlike the upper bound in python’s range(min,
+max).)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.from_focus">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_focus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.from_focus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read in a surface from a FOCUS-format file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.get_dofs">
+<code class="sig-name descname"><span class="pre">get_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.get_dofs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a 1D numpy array with all the degrees of freedom.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.get_rc">
+<code class="sig-name descname"><span class="pre">get_rc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.get_rc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a particular rc Parameter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.get_rs">
+<code class="sig-name descname"><span class="pre">get_rs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.get_rs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a particular rs Parameter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.get_zc">
+<code class="sig-name descname"><span class="pre">get_zc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.get_zc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a particular zc Parameter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.get_zs">
+<code class="sig-name descname"><span class="pre">get_zs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.get_zs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a particular zs Parameter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.make_names">
+<code class="sig-name descname"><span class="pre">make_names</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.make_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form a list of names of the rc, zs, rs, or zc array elements.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.set_dofs">
+<code class="sig-name descname"><span class="pre">set_dofs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.set_dofs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the shape coefficients from a 1D list/array</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.set_rc">
+<code class="sig-name descname"><span class="pre">set_rc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.set_rc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a particular rc Parameter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.set_rs">
+<code class="sig-name descname"><span class="pre">set_rs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.set_rs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a particular rs Parameter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.set_zc">
+<code class="sig-name descname"><span class="pre">set_zc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.set_zc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a particular zc Parameter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.set_zs">
+<code class="sig-name descname"><span class="pre">set_zs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.set_zs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a particular zs Parameter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.to_Garabedian">
+<code class="sig-name descname"><span class="pre">to_Garabedian</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.to_Garabedian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a SurfaceGarabedian object with the identical shape.</p>
+<p>For a derivation of the transformation here, see
+<a class="reference external" href="https://terpconnect.umd.edu/~mattland/assets/notes/toroidal_surface_parameterizations.pdf">https://terpconnect.umd.edu/~mattland/assets/notes/toroidal_surface_parameterizations.pdf</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.to_RZFourier">
+<code class="sig-name descname"><span class="pre">to_RZFourier</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.to_RZFourier" title="Permalink to this definition">¶</a></dt>
+<dd><p>No conversion necessary.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.core.surface.SurfaceRZFourier.volume">
+<code class="sig-name descname"><span class="pre">volume</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.SurfaceRZFourier.volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the volume of the surface.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.core.surface.area_volume_pure">
+<code class="sig-prename descclassname"><span class="pre">simsopt.core.surface.</span></code><code class="sig-name descname"><span class="pre">area_volume_pure</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stelsym</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mpol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ntor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ntheta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nphi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.area_volume_pure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the area and volume of a surface. This pure function is
+designed for automatic differentiation.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.core.surface.jit_area_volume_pure">
+<code class="sig-prename descclassname"><span class="pre">simsopt.core.surface.</span></code><code class="sig-name descname"><span class="pre">jit_area_volume_pure</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stelsym</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mpol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ntor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ntheta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nphi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.surface.jit_area_volume_pure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the area and volume of a surface. This pure function is
+designed for automatic differentiation.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-simsopt.core.util">
+<span id="simsopt-core-util-module"></span><h2>simsopt.core.util module<a class="headerlink" href="#module-simsopt.core.util" title="Permalink to this headline">¶</a></h2>
+<p>This module contains small utility functions and classes.</p>
+<dl class="py class">
+<dt id="simsopt.core.util.Struct">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.core.util.</span></code><code class="sig-name descname"><span class="pre">Struct</span></code><a class="headerlink" href="#simsopt.core.util.Struct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class is just a dummy mutable object to which we can add attributes.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.core.util.isbool">
+<code class="sig-prename descclassname"><span class="pre">simsopt.core.util.</span></code><code class="sig-name descname"><span class="pre">isbool</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.util.isbool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test whether val is any boolean type, either the native python
+bool or numpy’s <a href="#id1"><span class="problematic" id="id2">bool_</span></a>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.core.util.isnumber">
+<code class="sig-prename descclassname"><span class="pre">simsopt.core.util.</span></code><code class="sig-name descname"><span class="pre">isnumber</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.util.isnumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test whether val is any kind of number, including both native
+python types or numpy types.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.core.util.unique">
+<code class="sig-prename descclassname"><span class="pre">simsopt.core.util.</span></code><code class="sig-name descname"><span class="pre">unique</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inlist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.core.util.unique" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a list or tuple, return a list in which all duplicate
+entries have been removed. Unlike a python set, the order of
+entries in the original list will be preserved.  There is surely
+a faster algorithm than the one used here, but this function will
+not be used in performance-critical code.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-simsopt.core">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-simsopt.core" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="simsopt.geo.html" class="btn btn-neutral float-right" title="simsopt.geo package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="simsopt.html" class="btn btn-neutral float-left" title="simsopt package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Simsopt Development Team.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,507 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>simsopt.mhd package &mdash; simsopt 0.0.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/equation_numbers.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="simsopt.solve package" href="simsopt.solve.html" />
+    <link rel="prev" title="simsopt.geo package" href="simsopt.geo.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> simsopt
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="problems.html">Defining optimization problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#optimizable-objects">Optimizable objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#specifying-functions-that-go-into-the-objective-function">Specifying functions that go into the objective function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#degrees-of-freedom-dofs">Degrees of freedom (“dofs”)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#helpful-functions">Helpful functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#fixing-degrees-of-freedom">Fixing degrees of freedom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#derivatives">Derivatives</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#python-test-suite">Python test suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#longer-examples">Longer examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#continuous-integration">Continuous integration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="source.html">Source code on GitHub</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="simsopt.html">simsopt package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="simsopt.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="simsopt.core.html">simsopt.core package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.dofs">simsopt.core.dofs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.functions">simsopt.core.functions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.least_squares_problem">simsopt.core.least_squares_problem module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.optimizable">simsopt.core.optimizable module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.surface">simsopt.core.surface module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.util">simsopt.core.util module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.geo.html">simsopt.geo package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.biotsavart">simsopt.geo.biotsavart module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.config">simsopt.geo.config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.curve">simsopt.geo.curve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.fouriercurve">simsopt.geo.fouriercurve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.jit">simsopt.geo.jit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.magneticaxis">simsopt.geo.magneticaxis module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo.objectives">simsopt.geo.objectives module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#simsopt-geo-parameterfreecurve-module">simsopt.geo.parameterfreecurve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.geo.html#module-simsopt.geo">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">simsopt.mhd package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-simsopt.mhd.boozer">simsopt.mhd.boozer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-simsopt.mhd.spec">simsopt.mhd.spec module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-simsopt.mhd.vmec">simsopt.mhd.vmec module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-simsopt.mhd">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.solve.html">simsopt.solve package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#module-simsopt.solve.mpi_solve">simsopt.solve.mpi_solve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#module-simsopt.solve.serial_solve">simsopt.solve.serial_solve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#module-simsopt.solve">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.util.html">simsopt.util package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.util.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.util.html#module-simsopt.util.mpi">simsopt.util.mpi module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.util.html#module-simsopt.util">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="simsopt.html#module-simsopt">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">simsopt</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="simsopt.html">simsopt package</a> &raquo;</li>
+        
+      <li>simsopt.mhd package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/simsopt.mhd.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="simsopt-mhd-package">
+<h1>simsopt.mhd package<a class="headerlink" href="#simsopt-mhd-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-simsopt.mhd.boozer">
+<span id="simsopt-mhd-boozer-module"></span><h2>simsopt.mhd.boozer module<a class="headerlink" href="#module-simsopt.mhd.boozer" title="Permalink to this headline">¶</a></h2>
+<p>This module provides a class that handles the transformation to
+Boozer coordinates, and an optimization target for quasisymmetry.</p>
+<dl class="py class">
+<dt id="simsopt.mhd.boozer.Boozer">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.mhd.boozer.</span></code><code class="sig-name descname"><span class="pre">Boozer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">equil</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">simsopt.mhd.vmec.Vmec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mpol</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ntor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">32</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.mhd.boozer.Boozer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="simsopt.core.html#simsopt.core.optimizable.Optimizable" title="simsopt.core.optimizable.Optimizable"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.core.optimizable.Optimizable</span></code></a></p>
+<p>This class handles the transformation to Boozer coordinates.</p>
+<p>A Boozer instance maintains a set “s”, which is a registry of the
+surfaces on which other objects want Boozer-coordinate data. When
+the run() method is called, the Boozer transformation is carried
+out on all these surfaces. The registry can be cleared at any time
+by setting the s attribute to {}.</p>
+<dl class="py method">
+<dt id="simsopt.mhd.boozer.Boozer.get_dofs">
+<code class="sig-name descname"><span class="pre">get_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.mhd.boozer.Boozer.get_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.mhd.boozer.Boozer.register">
+<code class="sig-name descname"><span class="pre">register</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#simsopt.mhd.boozer.Boozer.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is called by objects that depend on this Boozer
+object, to indicate that they will want Boozer data on the
+given set of surfaces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>s</strong> – 1 or more surfaces on which Boozer data will be requested.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.mhd.boozer.Boozer.run">
+<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.mhd.boozer.Boozer.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run booz_xform on all the surfaces that have been registered.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.mhd.boozer.Boozer.set_dofs">
+<code class="sig-name descname"><span class="pre">set_dofs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.mhd.boozer.Boozer.set_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="simsopt.mhd.boozer.Quasisymmetry">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.mhd.boozer.</span></code><code class="sig-name descname"><span class="pre">Quasisymmetry</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boozer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#simsopt.mhd.boozer.Boozer" title="simsopt.mhd.boozer.Boozer"><span class="pre">simsopt.mhd.boozer.Boozer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalization</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'B00'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'even'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.mhd.boozer.Quasisymmetry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="simsopt.core.html#simsopt.core.optimizable.Optimizable" title="simsopt.core.optimizable.Optimizable"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.core.optimizable.Optimizable</span></code></a></p>
+<p>This class is used to compute the departure from quasisymmetry on
+a given flux surface based on the Boozer spectrum.</p>
+<dl class="py method">
+<dt id="simsopt.mhd.boozer.Quasisymmetry.J">
+<code class="sig-name descname"><span class="pre">J</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#simsopt.mhd.boozer.Quasisymmetry.J" title="Permalink to this definition">¶</a></dt>
+<dd><p>Carry out the calculation of the quasisymmetry error.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.mhd.boozer.Quasisymmetry.get_dofs">
+<code class="sig-name descname"><span class="pre">get_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.mhd.boozer.Quasisymmetry.get_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.mhd.boozer.Quasisymmetry.set_dofs">
+<code class="sig-name descname"><span class="pre">set_dofs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.mhd.boozer.Quasisymmetry.set_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.mhd.boozer.closest_index">
+<code class="sig-prename descclassname"><span class="pre">simsopt.mhd.boozer.</span></code><code class="sig-name descname"><span class="pre">closest_index</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#simsopt.mhd.boozer.closest_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a grid of values, find the grid point that is closest to an
+abitrary value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>grid</strong> – A list of values.</p></li>
+<li><p><strong>val</strong> – We will return the index of the closest grid point to this value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-simsopt.mhd.spec">
+<span id="simsopt-mhd-spec-module"></span><h2>simsopt.mhd.spec module<a class="headerlink" href="#module-simsopt.mhd.spec" title="Permalink to this headline">¶</a></h2>
+<p>This module provides a class that handles the SPEC equilibrium code.</p>
+<dl class="py class">
+<dt id="simsopt.mhd.spec.Residue">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.mhd.spec.</span></code><code class="sig-name descname"><span class="pre">Residue</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_guess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rtol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-09</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.mhd.spec.Residue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="simsopt.core.html#simsopt.core.optimizable.Optimizable" title="simsopt.core.optimizable.Optimizable"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.core.optimizable.Optimizable</span></code></a></p>
+<p>Greene’s residue, evaluated from a Spec equilibrum</p>
+<dl class="py method">
+<dt id="simsopt.mhd.spec.Residue.J">
+<code class="sig-name descname"><span class="pre">J</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.mhd.spec.Residue.J" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run Spec if needed, find the periodic field line, and return the residue</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.mhd.spec.Residue.get_dofs">
+<code class="sig-name descname"><span class="pre">get_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.mhd.spec.Residue.get_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.mhd.spec.Residue.set_dofs">
+<code class="sig-name descname"><span class="pre">set_dofs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.mhd.spec.Residue.set_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="simsopt.mhd.spec.Spec">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.mhd.spec.</span></code><code class="sig-name descname"><span class="pre">Spec</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'xspec'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.mhd.spec.Spec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="simsopt.core.html#simsopt.core.optimizable.Optimizable" title="simsopt.core.optimizable.Optimizable"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.core.optimizable.Optimizable</span></code></a></p>
+<p>This class represents the SPEC equilibrium code.</p>
+<p>Philosophy regarding mpol and ntor: The Spec object keeps track of
+mpol and ntor values that are independent of those for the
+boundary Surface object. If the Surface object has different
+mpol/ntor values, the Surface’s rbc/zbs arrays are first copied,
+then truncated or expanded to fit the mpol/ntor values of the Spec
+object to before Spec is run. Therefore, you may sometimes need to
+manually change the mpol and ntor values for the Spec object.</p>
+<dl class="py method">
+<dt id="simsopt.mhd.spec.Spec.get_dofs">
+<code class="sig-name descname"><span class="pre">get_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.mhd.spec.Spec.get_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.mhd.spec.Spec.iota">
+<code class="sig-name descname"><span class="pre">iota</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.mhd.spec.Spec.iota" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the rotational transform in the middle of the volume.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.mhd.spec.Spec.run">
+<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.mhd.spec.Spec.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run SPEC, if needed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.mhd.spec.Spec.set_dofs">
+<code class="sig-name descname"><span class="pre">set_dofs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.mhd.spec.Spec.set_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.mhd.spec.Spec.update_resolution">
+<code class="sig-name descname"><span class="pre">update_resolution</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mpol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ntor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.mhd.spec.Spec.update_resolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>For convenience, to save “.nml”</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.mhd.spec.Spec.volume">
+<code class="sig-name descname"><span class="pre">volume</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.mhd.spec.Spec.volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the volume inside the VMEC last closed flux surface.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.mhd.spec.nested_lists_to_array">
+<code class="sig-prename descclassname"><span class="pre">simsopt.mhd.spec.</span></code><code class="sig-name descname"><span class="pre">nested_lists_to_array</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ll</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.mhd.spec.nested_lists_to_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a ragged list of lists to a 2D numpy array.  Any entries
+that are None are replaced by 0.</p>
+<p>This function is applied to the RBC and ZBS arrays in the input
+namelist.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-simsopt.mhd.vmec">
+<span id="simsopt-mhd-vmec-module"></span><h2>simsopt.mhd.vmec module<a class="headerlink" href="#module-simsopt.mhd.vmec" title="Permalink to this headline">¶</a></h2>
+<p>This module provides a class that handles the VMEC equilibrium code.</p>
+<dl class="py data">
+<dt id="simsopt.mhd.vmec.reset_jacdt_flag">
+<code class="sig-prename descclassname"><span class="pre">simsopt.mhd.vmec.</span></code><code class="sig-name descname"><span class="pre">reset_jacdt_flag</span></code><em class="property"> <span class="pre">=</span> <span class="pre">32</span></em><a class="headerlink" href="#simsopt.mhd.vmec.reset_jacdt_flag" title="Permalink to this definition">¶</a></dt>
+<dd><p>value     flag-name             calls routines to…
+—–     ———             ———————</p>
+<blockquote>
+<div><blockquote>
+<div><dl class="simple">
+<dt>1       restart_flag          reset internal run-control parameters</dt><dd><p>(for example, if jacobian was bad, to try a smaller time-step)</p>
+</dd>
+<dt>2       readin_flag           read in data from input_file and initialize parameters/arrays</dt><dd><p>which do not dependent on radial grid size
+allocate internal grid-dependent arrays used by vmec;
+initialize internal grid-dependent vmec profiles (xc, iota, etc);
+setup loop for radial multi-grid meshes or, if ns_index = ictrl_array(4)
+is &gt; 0, use radial grid points specified by ns_array[ns_index]</p>
+</dd>
+<dt>4       timestep_flag         iterate vmec either by “niter” time steps or until ftol satisfied,</dt><dd><p>whichever comes first. If numsteps (see below) &gt; 0, vmec will return
+to caller after numsteps, rather than niter, steps.</p>
+</dd>
+</dl>
+<p>8       output_flag           write out output files (wout, jxbout)</p>
+</div></blockquote>
+<dl class="simple">
+<dt>16       cleanup_flag          cleanup (deallocate arrays) - this terminates present run of the sequence</dt><dd><p>This flag will be ignored if the run might be continued. For example,
+if ier_flag (see below) returns the value more_iter_flag, the cleanup
+code will be skipped even if cleanup_flag is set, so that the run
+could be continued on the next call to runvmec.</p>
+</dd>
+</dl>
+<p>32       reset_jacdt_flag      Resets ijacobian flag and time step to delt0</p>
+<blockquote>
+<div><p>thus, setting ictrl_flag = 1+2+4+8+16 will perform ALL the tasks thru cleanup_flag
+in addition, if ns_index = 0 and numsteps = 0 (see below), vmec will control its own run history</p>
+</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="module-simsopt.mhd">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-simsopt.mhd" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="simsopt.solve.html" class="btn btn-neutral float-right" title="simsopt.solve package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="simsopt.geo.html" class="btn btn-neutral float-left" title="simsopt.geo package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Simsopt Development Team.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

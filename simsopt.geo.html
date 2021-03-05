@@ -1,0 +1,830 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>simsopt.geo package &mdash; simsopt 0.0.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/equation_numbers.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="simsopt.mhd package" href="simsopt.mhd.html" />
+    <link rel="prev" title="simsopt.core package" href="simsopt.core.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> simsopt
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="problems.html">Defining optimization problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#optimizable-objects">Optimizable objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#specifying-functions-that-go-into-the-objective-function">Specifying functions that go into the objective function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#degrees-of-freedom-dofs">Degrees of freedom (“dofs”)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#helpful-functions">Helpful functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#fixing-degrees-of-freedom">Fixing degrees of freedom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="problems.html#derivatives">Derivatives</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#python-test-suite">Python test suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#longer-examples">Longer examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#continuous-integration">Continuous integration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="source.html">Source code on GitHub</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="simsopt.html">simsopt package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="simsopt.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="simsopt.core.html">simsopt.core package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.dofs">simsopt.core.dofs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.functions">simsopt.core.functions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.least_squares_problem">simsopt.core.least_squares_problem module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.optimizable">simsopt.core.optimizable module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.surface">simsopt.core.surface module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core.util">simsopt.core.util module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.core.html#module-simsopt.core">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">simsopt.geo package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-simsopt.geo.biotsavart">simsopt.geo.biotsavart module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-simsopt.geo.config">simsopt.geo.config module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-simsopt.geo.curve">simsopt.geo.curve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-simsopt.geo.fouriercurve">simsopt.geo.fouriercurve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-simsopt.geo.jit">simsopt.geo.jit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-simsopt.geo.magneticaxis">simsopt.geo.magneticaxis module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-simsopt.geo.objectives">simsopt.geo.objectives module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#simsopt-geo-parameterfreecurve-module">simsopt.geo.parameterfreecurve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-simsopt.geo">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.mhd.html">simsopt.mhd package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#module-simsopt.mhd.boozer">simsopt.mhd.boozer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#module-simsopt.mhd.spec">simsopt.mhd.spec module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#module-simsopt.mhd.vmec">simsopt.mhd.vmec module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.mhd.html#module-simsopt.mhd">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.solve.html">simsopt.solve package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#module-simsopt.solve.mpi_solve">simsopt.solve.mpi_solve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#module-simsopt.solve.serial_solve">simsopt.solve.serial_solve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.solve.html#module-simsopt.solve">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simsopt.util.html">simsopt.util package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.util.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.util.html#module-simsopt.util.mpi">simsopt.util.mpi module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simsopt.util.html#module-simsopt.util">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="simsopt.html#module-simsopt">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">simsopt</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="simsopt.html">simsopt package</a> &raquo;</li>
+        
+      <li>simsopt.geo package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/simsopt.geo.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="simsopt-geo-package">
+<h1>simsopt.geo package<a class="headerlink" href="#simsopt-geo-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-simsopt.geo.biotsavart">
+<span id="simsopt-geo-biotsavart-module"></span><h2>simsopt.geo.biotsavart module<a class="headerlink" href="#module-simsopt.geo.biotsavart" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="simsopt.geo.biotsavart.BiotSavart">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.geo.biotsavart.</span></code><code class="sig-name descname"><span class="pre">BiotSavart</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coils</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coil_currents</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.biotsavart.BiotSavart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="simsopt.geo.biotsavart.BiotSavart.B">
+<code class="sig-name descname"><span class="pre">B</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compute_derivatives</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.biotsavart.BiotSavart.B" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.biotsavart.BiotSavart.B_and_dB_vjp">
+<code class="sig-name descname"><span class="pre">B_and_dB_vjp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vgrad</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.biotsavart.BiotSavart.B_and_dB_vjp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.biotsavart.BiotSavart.clear_cached_properties">
+<code class="sig-name descname"><span class="pre">clear_cached_properties</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.biotsavart.BiotSavart.clear_cached_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.biotsavart.BiotSavart.compute">
+<code class="sig-name descname"><span class="pre">compute</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compute_derivatives</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.biotsavart.BiotSavart.compute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.biotsavart.BiotSavart.d2B_by_dXdX">
+<code class="sig-name descname"><span class="pre">d2B_by_dXdX</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compute_derivatives</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.biotsavart.BiotSavart.d2B_by_dXdX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.biotsavart.BiotSavart.d2B_by_dXdcoilcurrents">
+<code class="sig-name descname"><span class="pre">d2B_by_dXdcoilcurrents</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compute_derivatives</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.biotsavart.BiotSavart.d2B_by_dXdcoilcurrents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.biotsavart.BiotSavart.d3B_by_dXdXdcoilcurrents">
+<code class="sig-name descname"><span class="pre">d3B_by_dXdXdcoilcurrents</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compute_derivatives</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.biotsavart.BiotSavart.d3B_by_dXdXdcoilcurrents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.biotsavart.BiotSavart.dB_by_dX">
+<code class="sig-name descname"><span class="pre">dB_by_dX</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compute_derivatives</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.biotsavart.BiotSavart.dB_by_dX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.biotsavart.BiotSavart.dB_by_dcoilcurrents">
+<code class="sig-name descname"><span class="pre">dB_by_dcoilcurrents</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compute_derivatives</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.biotsavart.BiotSavart.dB_by_dcoilcurrents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.biotsavart.BiotSavart.set_points">
+<code class="sig-name descname"><span class="pre">set_points</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.biotsavart.BiotSavart.set_points" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-simsopt.geo.config">
+<span id="simsopt-geo-config-module"></span><h2>simsopt.geo.config module<a class="headerlink" href="#module-simsopt.geo.config" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-simsopt.geo.curve">
+<span id="simsopt-geo-curve-module"></span><h2>simsopt.geo.curve module<a class="headerlink" href="#module-simsopt.geo.curve" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="simsopt.geo.curve.Curve">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.geo.curve.</span></code><code class="sig-name descname"><span class="pre">Curve</span></code><a class="headerlink" href="#simsopt.geo.curve.Curve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="simsopt.geo.curve.Curve.dfrenet_frame_by_dcoeff">
+<code class="sig-name descname"><span class="pre">dfrenet_frame_by_dcoeff</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.Curve.dfrenet_frame_by_dcoeff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.Curve.dincremental_arclength_by_dcoeff_vjp">
+<code class="sig-name descname"><span class="pre">dincremental_arclength_by_dcoeff_vjp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.Curve.dincremental_arclength_by_dcoeff_vjp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.Curve.dkappa_by_dcoeff_impl">
+<code class="sig-name descname"><span class="pre">dkappa_by_dcoeff_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dkappa_by_dcoeff</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.Curve.dkappa_by_dcoeff_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.Curve.dkappa_by_dcoeff_vjp">
+<code class="sig-name descname"><span class="pre">dkappa_by_dcoeff_vjp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.Curve.dkappa_by_dcoeff_vjp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.Curve.dkappadash_by_dcoeff">
+<code class="sig-name descname"><span class="pre">dkappadash_by_dcoeff</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.Curve.dkappadash_by_dcoeff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.Curve.dtorsion_by_dcoeff_impl">
+<code class="sig-name descname"><span class="pre">dtorsion_by_dcoeff_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtorsion_by_dcoeff</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.Curve.dtorsion_by_dcoeff_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.Curve.dtorsion_by_dcoeff_vjp">
+<code class="sig-name descname"><span class="pre">dtorsion_by_dcoeff_vjp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.Curve.dtorsion_by_dcoeff_vjp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.Curve.frenet_frame">
+<code class="sig-name descname"><span class="pre">frenet_frame</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.Curve.frenet_frame" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.Curve.kappa_impl">
+<code class="sig-name descname"><span class="pre">kappa_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kappa</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.Curve.kappa_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.Curve.kappadash">
+<code class="sig-name descname"><span class="pre">kappadash</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.Curve.kappadash" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.Curve.plot">
+<code class="sig-name descname"><span class="pre">plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_derivative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">closed_loop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linestyle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.Curve.plot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.Curve.torsion_impl">
+<code class="sig-name descname"><span class="pre">torsion_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">torsion</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.Curve.torsion_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="simsopt.geo.curve.JaxCurve">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.geo.curve.</span></code><code class="sig-name descname"><span class="pre">JaxCurve</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quadpoints</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma_pure</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.JaxCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">simsgeopp.Curve</span></code>, <a class="reference internal" href="#simsopt.geo.curve.Curve" title="simsopt.geo.curve.Curve"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.geo.curve.Curve</span></code></a></p>
+<dl class="py method">
+<dt id="simsopt.geo.curve.JaxCurve.dgamma_by_dcoeff_impl">
+<code class="sig-name descname"><span class="pre">dgamma_by_dcoeff_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dgamma_by_dcoeff</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.JaxCurve.dgamma_by_dcoeff_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.JaxCurve.dgamma_by_dcoeff_vjp">
+<code class="sig-name descname"><span class="pre">dgamma_by_dcoeff_vjp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.JaxCurve.dgamma_by_dcoeff_vjp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.JaxCurve.dgammadash_by_dcoeff_impl">
+<code class="sig-name descname"><span class="pre">dgammadash_by_dcoeff_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dgammadash_by_dcoeff</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.JaxCurve.dgammadash_by_dcoeff_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.JaxCurve.dgammadash_by_dcoeff_vjp">
+<code class="sig-name descname"><span class="pre">dgammadash_by_dcoeff_vjp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.JaxCurve.dgammadash_by_dcoeff_vjp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.JaxCurve.dgammadashdash_by_dcoeff_impl">
+<code class="sig-name descname"><span class="pre">dgammadashdash_by_dcoeff_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dgammadashdash_by_dcoeff</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.JaxCurve.dgammadashdash_by_dcoeff_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.JaxCurve.dgammadashdash_by_dcoeff_vjp">
+<code class="sig-name descname"><span class="pre">dgammadashdash_by_dcoeff_vjp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.JaxCurve.dgammadashdash_by_dcoeff_vjp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.JaxCurve.dgammadashdashdash_by_dcoeff_impl">
+<code class="sig-name descname"><span class="pre">dgammadashdashdash_by_dcoeff_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dgammadashdashdash_by_dcoeff</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.JaxCurve.dgammadashdashdash_by_dcoeff_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.JaxCurve.dgammadashdashdash_by_dcoeff_vjp">
+<code class="sig-name descname"><span class="pre">dgammadashdashdash_by_dcoeff_vjp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.JaxCurve.dgammadashdashdash_by_dcoeff_vjp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.JaxCurve.dkappa_by_dcoeff_vjp">
+<code class="sig-name descname"><span class="pre">dkappa_by_dcoeff_vjp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.JaxCurve.dkappa_by_dcoeff_vjp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.JaxCurve.dtorsion_by_dcoeff_vjp">
+<code class="sig-name descname"><span class="pre">dtorsion_by_dcoeff_vjp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.JaxCurve.dtorsion_by_dcoeff_vjp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.JaxCurve.gamma_impl">
+<code class="sig-name descname"><span class="pre">gamma_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.JaxCurve.gamma_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.JaxCurve.gammadash_impl">
+<code class="sig-name descname"><span class="pre">gammadash_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gammadash</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.JaxCurve.gammadash_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.JaxCurve.gammadashdash_impl">
+<code class="sig-name descname"><span class="pre">gammadashdash_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gammadashdash</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.JaxCurve.gammadashdash_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.JaxCurve.gammadashdashdash_impl">
+<code class="sig-name descname"><span class="pre">gammadashdashdash_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gammadashdashdash</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.JaxCurve.gammadashdashdash_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="simsopt.geo.curve.RotatedCurve">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.geo.curve.</span></code><code class="sig-name descname"><span class="pre">RotatedCurve</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flip</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.RotatedCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">simsgeopp.Curve</span></code>, <a class="reference internal" href="#simsopt.geo.curve.Curve" title="simsopt.geo.curve.Curve"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.geo.curve.Curve</span></code></a></p>
+<dl class="py method">
+<dt id="simsopt.geo.curve.RotatedCurve.dgamma_by_dcoeff_impl">
+<code class="sig-name descname"><span class="pre">dgamma_by_dcoeff_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dgamma_by_dcoeff</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.RotatedCurve.dgamma_by_dcoeff_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.RotatedCurve.dgamma_by_dcoeff_vjp">
+<code class="sig-name descname"><span class="pre">dgamma_by_dcoeff_vjp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.RotatedCurve.dgamma_by_dcoeff_vjp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.RotatedCurve.dgammadash_by_dcoeff_impl">
+<code class="sig-name descname"><span class="pre">dgammadash_by_dcoeff_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dgammadash_by_dcoeff</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.RotatedCurve.dgammadash_by_dcoeff_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.RotatedCurve.dgammadash_by_dcoeff_vjp">
+<code class="sig-name descname"><span class="pre">dgammadash_by_dcoeff_vjp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.RotatedCurve.dgammadash_by_dcoeff_vjp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.RotatedCurve.dgammadashdash_by_dcoeff_impl">
+<code class="sig-name descname"><span class="pre">dgammadashdash_by_dcoeff_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dgammadashdash_by_dcoeff</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.RotatedCurve.dgammadashdash_by_dcoeff_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.RotatedCurve.dgammadashdash_by_dcoeff_vjp">
+<code class="sig-name descname"><span class="pre">dgammadashdash_by_dcoeff_vjp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.RotatedCurve.dgammadashdash_by_dcoeff_vjp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.RotatedCurve.dgammadashdashdash_by_dcoeff_impl">
+<code class="sig-name descname"><span class="pre">dgammadashdashdash_by_dcoeff_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dgammadashdashdash_by_dcoeff</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.RotatedCurve.dgammadashdashdash_by_dcoeff_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.RotatedCurve.dgammadashdashdash_by_dcoeff_vjp">
+<code class="sig-name descname"><span class="pre">dgammadashdashdash_by_dcoeff_vjp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.RotatedCurve.dgammadashdashdash_by_dcoeff_vjp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.RotatedCurve.gamma_impl">
+<code class="sig-name descname"><span class="pre">gamma_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.RotatedCurve.gamma_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.RotatedCurve.gammadash_impl">
+<code class="sig-name descname"><span class="pre">gammadash_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gammadash</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.RotatedCurve.gammadash_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.RotatedCurve.gammadashdash_impl">
+<code class="sig-name descname"><span class="pre">gammadashdash_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gammadashdash</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.RotatedCurve.gammadashdash_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.RotatedCurve.gammadashdashdash_impl">
+<code class="sig-name descname"><span class="pre">gammadashdashdash_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gammadashdashdash</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.RotatedCurve.gammadashdashdash_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.RotatedCurve.get_dofs">
+<code class="sig-name descname"><span class="pre">get_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.RotatedCurve.get_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.RotatedCurve.num_dofs">
+<code class="sig-name descname"><span class="pre">num_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.RotatedCurve.num_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.curve.RotatedCurve.set_dofs_impl">
+<code class="sig-name descname"><span class="pre">set_dofs_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.RotatedCurve.set_dofs_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.geo.curve.incremental_arclength_pure">
+<code class="sig-prename descclassname"><span class="pre">simsopt.geo.curve.</span></code><code class="sig-name descname"><span class="pre">incremental_arclength_pure</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d1gamma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.incremental_arclength_pure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.geo.curve.incremental_arclength_vjp">
+<code class="sig-prename descclassname"><span class="pre">simsopt.geo.curve.</span></code><code class="sig-name descname"><span class="pre">incremental_arclength_vjp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d1gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.incremental_arclength_vjp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.geo.curve.kappa_pure">
+<code class="sig-prename descclassname"><span class="pre">simsopt.geo.curve.</span></code><code class="sig-name descname"><span class="pre">kappa_pure</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d1gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d2gamma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.kappa_pure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.geo.curve.kappagrad0">
+<code class="sig-prename descclassname"><span class="pre">simsopt.geo.curve.</span></code><code class="sig-name descname"><span class="pre">kappagrad0</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d1gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d2gamma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.kappagrad0" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.geo.curve.kappagrad1">
+<code class="sig-prename descclassname"><span class="pre">simsopt.geo.curve.</span></code><code class="sig-name descname"><span class="pre">kappagrad1</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d1gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d2gamma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.kappagrad1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.geo.curve.kappavjp0">
+<code class="sig-prename descclassname"><span class="pre">simsopt.geo.curve.</span></code><code class="sig-name descname"><span class="pre">kappavjp0</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d1gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d2gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.kappavjp0" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.geo.curve.kappavjp1">
+<code class="sig-prename descclassname"><span class="pre">simsopt.geo.curve.</span></code><code class="sig-name descname"><span class="pre">kappavjp1</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d1gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d2gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.kappavjp1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.geo.curve.torsion_pure">
+<code class="sig-prename descclassname"><span class="pre">simsopt.geo.curve.</span></code><code class="sig-name descname"><span class="pre">torsion_pure</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d1gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d2gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d3gamma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.torsion_pure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.geo.curve.torsionvjp0">
+<code class="sig-prename descclassname"><span class="pre">simsopt.geo.curve.</span></code><code class="sig-name descname"><span class="pre">torsionvjp0</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d1gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d2gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d3gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.torsionvjp0" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.geo.curve.torsionvjp1">
+<code class="sig-prename descclassname"><span class="pre">simsopt.geo.curve.</span></code><code class="sig-name descname"><span class="pre">torsionvjp1</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d1gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d2gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d3gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.torsionvjp1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.geo.curve.torsionvjp2">
+<code class="sig-prename descclassname"><span class="pre">simsopt.geo.curve.</span></code><code class="sig-name descname"><span class="pre">torsionvjp2</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d1gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d2gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d3gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.curve.torsionvjp2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-simsopt.geo.fouriercurve">
+<span id="simsopt-geo-fouriercurve-module"></span><h2>simsopt.geo.fouriercurve module<a class="headerlink" href="#module-simsopt.geo.fouriercurve" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="simsopt.geo.fouriercurve.FourierCurve">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.geo.fouriercurve.</span></code><code class="sig-name descname"><span class="pre">FourierCurve</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quadpoints</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.fouriercurve.FourierCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">simsgeopp.FourierCurve</span></code>, <a class="reference internal" href="#simsopt.geo.curve.Curve" title="simsopt.geo.curve.Curve"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.geo.curve.Curve</span></code></a></p>
+<dl class="py method">
+<dt id="simsopt.geo.fouriercurve.FourierCurve.get_dofs">
+<code class="sig-name descname"><span class="pre">get_dofs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">simsgeopp.FourierCurve</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#simsopt.geo.fouriercurve.FourierCurve.get_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.fouriercurve.FourierCurve.set_dofs">
+<code class="sig-name descname"><span class="pre">set_dofs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">simsgeopp.FourierCurve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#simsopt.geo.fouriercurve.FourierCurve.set_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="simsopt.geo.fouriercurve.JaxFourierCurve">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.geo.fouriercurve.</span></code><code class="sig-name descname"><span class="pre">JaxFourierCurve</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quadpoints</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.fouriercurve.JaxFourierCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simsopt.geo.curve.JaxCurve" title="simsopt.geo.curve.JaxCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.geo.curve.JaxCurve</span></code></a></p>
+<p>A Python+Jax implementation of the FourierCurve</p>
+<dl class="py method">
+<dt id="simsopt.geo.fouriercurve.JaxFourierCurve.get_dofs">
+<code class="sig-name descname"><span class="pre">get_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.fouriercurve.JaxFourierCurve.get_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.fouriercurve.JaxFourierCurve.num_dofs">
+<code class="sig-name descname"><span class="pre">num_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.fouriercurve.JaxFourierCurve.num_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.fouriercurve.JaxFourierCurve.set_dofs_impl">
+<code class="sig-name descname"><span class="pre">set_dofs_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dofs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.fouriercurve.JaxFourierCurve.set_dofs_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.geo.fouriercurve.jaxfouriercurve_pure">
+<code class="sig-prename descclassname"><span class="pre">simsopt.geo.fouriercurve.</span></code><code class="sig-name descname"><span class="pre">jaxfouriercurve_pure</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dofs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quadpoints</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.fouriercurve.jaxfouriercurve_pure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-simsopt.geo.jit">
+<span id="simsopt-geo-jit-module"></span><h2>simsopt.geo.jit module<a class="headerlink" href="#module-simsopt.geo.jit" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="simsopt.geo.jit.jit">
+<code class="sig-prename descclassname"><span class="pre">simsopt.geo.jit.</span></code><code class="sig-name descname"><span class="pre">jit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fun</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.jit.jit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-simsopt.geo.magneticaxis">
+<span id="simsopt-geo-magneticaxis-module"></span><h2>simsopt.geo.magneticaxis module<a class="headerlink" href="#module-simsopt.geo.magneticaxis" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="simsopt.geo.magneticaxis.JaxStellaratorSymmetricCylindricalFourierCurve">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.geo.magneticaxis.</span></code><code class="sig-name descname"><span class="pre">JaxStellaratorSymmetricCylindricalFourierCurve</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quadpoints</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.magneticaxis.JaxStellaratorSymmetricCylindricalFourierCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simsopt.geo.curve.JaxCurve" title="simsopt.geo.curve.JaxCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.geo.curve.JaxCurve</span></code></a></p>
+<p>This class can for example be used to describe a magnetic axis.</p>
+<dl class="py method">
+<dt id="simsopt.geo.magneticaxis.JaxStellaratorSymmetricCylindricalFourierCurve.get_dofs">
+<code class="sig-name descname"><span class="pre">get_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.magneticaxis.JaxStellaratorSymmetricCylindricalFourierCurve.get_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.magneticaxis.JaxStellaratorSymmetricCylindricalFourierCurve.num_dofs">
+<code class="sig-name descname"><span class="pre">num_dofs</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.magneticaxis.JaxStellaratorSymmetricCylindricalFourierCurve.num_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.magneticaxis.JaxStellaratorSymmetricCylindricalFourierCurve.set_dofs_impl">
+<code class="sig-name descname"><span class="pre">set_dofs_impl</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dofs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.magneticaxis.JaxStellaratorSymmetricCylindricalFourierCurve.set_dofs_impl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="simsopt.geo.magneticaxis.StellaratorSymmetricCylindricalFourierCurve">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.geo.magneticaxis.</span></code><code class="sig-name descname"><span class="pre">StellaratorSymmetricCylindricalFourierCurve</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">quadpoints</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.magneticaxis.StellaratorSymmetricCylindricalFourierCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">simsgeopp.StellaratorSymmetricCylindricalFourierCurve</span></code>, <a class="reference internal" href="#simsopt.geo.curve.Curve" title="simsopt.geo.curve.Curve"><code class="xref py py-class docutils literal notranslate"><span class="pre">simsopt.geo.curve.Curve</span></code></a></p>
+<dl class="py method">
+<dt id="simsopt.geo.magneticaxis.StellaratorSymmetricCylindricalFourierCurve.get_dofs">
+<code class="sig-name descname"><span class="pre">get_dofs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">simsgeopp.StellaratorSymmetricCylindricalFourierCurve</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#simsopt.geo.magneticaxis.StellaratorSymmetricCylindricalFourierCurve.get_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.magneticaxis.StellaratorSymmetricCylindricalFourierCurve.set_dofs">
+<code class="sig-name descname"><span class="pre">set_dofs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">simsgeopp.StellaratorSymmetricCylindricalFourierCurve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#simsopt.geo.magneticaxis.StellaratorSymmetricCylindricalFourierCurve.set_dofs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.geo.magneticaxis.stellaratorsymmetriccylindricalfouriercurve_pure">
+<code class="sig-prename descclassname"><span class="pre">simsopt.geo.magneticaxis.</span></code><code class="sig-name descname"><span class="pre">stellaratorsymmetriccylindricalfouriercurve_pure</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dofs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quadpoints</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nfp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.magneticaxis.stellaratorsymmetriccylindricalfouriercurve_pure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-simsopt.geo.objectives">
+<span id="simsopt-geo-objectives-module"></span><h2>simsopt.geo.objectives module<a class="headerlink" href="#module-simsopt.geo.objectives" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="simsopt.geo.objectives.CurveLength">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.geo.objectives.</span></code><code class="sig-name descname"><span class="pre">CurveLength</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.objectives.CurveLength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="simsopt.geo.objectives.CurveLength.J">
+<code class="sig-name descname"><span class="pre">J</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.objectives.CurveLength.J" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.objectives.CurveLength.dJ">
+<code class="sig-name descname"><span class="pre">dJ</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.objectives.CurveLength.dJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="simsopt.geo.objectives.LpCurveCurvature">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.geo.objectives.</span></code><code class="sig-name descname"><span class="pre">LpCurveCurvature</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.objectives.LpCurveCurvature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="simsopt.geo.objectives.LpCurveCurvature.J">
+<code class="sig-name descname"><span class="pre">J</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.objectives.LpCurveCurvature.J" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.objectives.LpCurveCurvature.dJ">
+<code class="sig-name descname"><span class="pre">dJ</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.objectives.LpCurveCurvature.dJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="simsopt.geo.objectives.LpCurveTorsion">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.geo.objectives.</span></code><code class="sig-name descname"><span class="pre">LpCurveTorsion</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.objectives.LpCurveTorsion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="simsopt.geo.objectives.LpCurveTorsion.J">
+<code class="sig-name descname"><span class="pre">J</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.objectives.LpCurveTorsion.J" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.objectives.LpCurveTorsion.dJ">
+<code class="sig-name descname"><span class="pre">dJ</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.objectives.LpCurveTorsion.dJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.geo.objectives.Lp_curvature_pure">
+<code class="sig-prename descclassname"><span class="pre">simsopt.geo.objectives.</span></code><code class="sig-name descname"><span class="pre">Lp_curvature_pure</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kappa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gammadash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desired_kappa</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.objectives.Lp_curvature_pure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.geo.objectives.Lp_torsion_pure">
+<code class="sig-prename descclassname"><span class="pre">simsopt.geo.objectives.</span></code><code class="sig-name descname"><span class="pre">Lp_torsion_pure</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">torsion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gammadash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.objectives.Lp_torsion_pure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt id="simsopt.geo.objectives.MinimumDistance">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">simsopt.geo.objectives.</span></code><code class="sig-name descname"><span class="pre">MinimumDistance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curves</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minimum_distance</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.objectives.MinimumDistance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="simsopt.geo.objectives.MinimumDistance.J">
+<code class="sig-name descname"><span class="pre">J</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.objectives.MinimumDistance.J" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="simsopt.geo.objectives.MinimumDistance.dJ">
+<code class="sig-name descname"><span class="pre">dJ</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.objectives.MinimumDistance.dJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.geo.objectives.curve_length_pure">
+<code class="sig-prename descclassname"><span class="pre">simsopt.geo.objectives.</span></code><code class="sig-name descname"><span class="pre">curve_length_pure</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.objectives.curve_length_pure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="simsopt.geo.objectives.distance_pure">
+<code class="sig-prename descclassname"><span class="pre">simsopt.geo.objectives.</span></code><code class="sig-name descname"><span class="pre">distance_pure</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minimum_distance</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simsopt.geo.objectives.distance_pure" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="simsopt-geo-parameterfreecurve-module">
+<h2>simsopt.geo.parameterfreecurve module<a class="headerlink" href="#simsopt-geo-parameterfreecurve-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-simsopt.geo">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-simsopt.geo" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="simsopt.mhd.html" class="btn btn-neutral float-right" title="simsopt.mhd package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="simsopt.core.html" class="btn btn-neutral float-left" title="simsopt.core package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Simsopt Development Team.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
