@@ -175,6 +175,7 @@ class Boozer(Optimizable):
             # Transfer data in memory from VMEC to booz_xform
             self.bx.asym = bool(wout.lasym)
             self.bx.nfp = wout.nfp
+            self.bx.aspect = wout.aspect
 
             self.bx.mpol = wout.mpol
             self.bx.ntor = wout.ntor
