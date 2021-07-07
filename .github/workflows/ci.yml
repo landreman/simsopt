@@ -59,6 +59,14 @@ jobs:
       #with:
       #  submodules: true
 
+    - name: Download and compile KNOSOS
+      run: |
+        git clone https://github.com/PrincetonUniversity/STELLOPT.git
+        cd STELLOPT
+        echo "STELLOPT_PATH=$PWD" >> $GITHUB_ENV
+        git checkout CIEMAT
+        ./build_all -o clean_debug -j 2 KNOSOS
+     
     # We must run actions/checkout@v2 before downloading and building VMEC, since checkout deletes the contents of the directory.
     - name: Download the VMEC2000 standalone repository
       run: git clone https://github.com/hiddensymmetries/VMEC2000.git
