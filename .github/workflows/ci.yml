@@ -70,7 +70,7 @@ jobs:
         export MACHINE=docker
         echo "MACHINE=docker" >> $GITHUB_ENV
         env | grep MACHINE
-        git checkout CIEMAT
+        git checkout CIEMAT_mjl
         make test_make
         ./build_all -o clean_debug -j 2 KNOSOS
      
