@@ -67,6 +67,7 @@ jobs:
         env | grep STELLOPT_PATH
         echo "STELLOPT_PATH=$PWD" >> $GITHUB_ENV
         git checkout CIEMAT
+        make test_make
         ./build_all -o clean_debug -j 2 KNOSOS
      
     # We must run actions/checkout@v2 before downloading and building VMEC, since checkout deletes the contents of the directory.
