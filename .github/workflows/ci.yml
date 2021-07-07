@@ -63,6 +63,8 @@ jobs:
       run: |
         git clone https://github.com/PrincetonUniversity/STELLOPT.git
         cd STELLOPT
+        export STELLOPT_PATH=$PWD
+        env | grep STELLOPT_PATH
         echo "STELLOPT_PATH=$PWD" >> $GITHUB_ENV
         git checkout CIEMAT
         ./build_all -o clean_debug -j 2 KNOSOS

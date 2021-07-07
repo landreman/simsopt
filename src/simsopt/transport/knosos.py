@@ -17,6 +17,7 @@ from .._core.util import ObjectiveFailure
 
 logger = logging.getLogger(__name__)
 
+
 class Knosos(Optimizable):
     """
     If you want to run KNOSOS from a Boozer object, then provide that
@@ -29,13 +30,14 @@ class Knosos(Optimizable):
     Do not include input.surfaces in the list of input files, since
     this file will be generated automatically.
     """
+
     def __init__(self,
                  boozer=None,
                  s=0.5,
                  input_files=["input.fastions", "input.model", "input.parameters"],
                  exe="xknosos",
                  mpi=None):
-        
+
         self.boozer = boozer
         self.exe = exe
         self.need_to_run_code = True
@@ -45,7 +47,7 @@ class Knosos(Optimizable):
         # Record all the input files:
         self.input_files = [os.path.abspath(filename) for filename in input_files]
         logger.debug(f"input_files: {self.input_files}")
-        
+
         # Force s to be a list:
         try:
             ss = list(s)
@@ -82,11 +84,11 @@ class Knosos(Optimizable):
         if (self.mpi is not None) and (not self.mpi.proc0_groups):
             logger.debug("This proc is skipping Knosos.run since it is not a group leader.")
             return
-        
+
         if not self.need_to_run_code:
             logger.debug("No need to re-run KNOSOS")
             return
-        
+
         logger.debug("About to run KNOSOS")
         self.counter += 1
 
@@ -102,10 +104,10 @@ class Knosos(Optimizable):
         os.chdir(dirname)
 
         # Write all the input files needed by knosos:
-        
+
         if self.boozer is not None:
             self.boozer.bx.write_boozmn("boozmn.nc")
-            
+
         for filename in self.input_files:
             shutil.copy(filename, '.')
 
