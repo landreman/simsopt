@@ -66,6 +66,9 @@ jobs:
         export STELLOPT_PATH=$PWD
         env | grep STELLOPT_PATH
         echo "STELLOPT_PATH=$PWD" >> $GITHUB_ENV
+        export MACHINE=docker
+        echo "MACHINE=docker" >> $GITHUB_ENV
+        env | grep MACHINE
         git checkout CIEMAT
         make test_make
         ./build_all -o clean_debug -j 2 KNOSOS
